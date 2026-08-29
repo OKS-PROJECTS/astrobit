@@ -44,3 +44,7 @@ light, dark and every component follow automatically.
 
 See [CHANGELOG.md](./CHANGELOG.md) for release history and the compatible oks-ui
 range.
+
+## License
+
+[MIT](./LICENSE) © OKS-PROJECTS

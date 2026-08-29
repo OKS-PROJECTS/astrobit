@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "Astrobit — an admin dashboard template built entirely with oks-ui.",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
