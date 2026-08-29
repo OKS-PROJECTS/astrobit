@@ -16,7 +16,7 @@ createRoot(document.getElementById("root")).render(
     <ThemeProvider>
       <LayoutProvider>
         <ToastProvider position="top-right">
-          <BrowserRouter>
+          <BrowserRouter basename={import.meta.env.BASE_URL}>
             <App />
           </BrowserRouter>
         </ToastProvider>
