@@ -1,0 +1,268 @@
+/*
+ * Astrobit design tokens.
+ *
+ * Two layers:
+ *   1. oks-ui overrides  — repoint --oks-* so every oks-ui primitive adopts the
+ *      Astrobit palette (brand ramp -> primary, semantic roles, radii).
+ *   2. the --app-* layer  — Astrobit's own semantic tokens. Every composed
+ *      component in src/Components/ui reads ONLY --app-*, so light/dark and any
+ *      future rebrand flip together from here.
+ *
+ * :root            = light theme (default)
+ * :root[data-theme="dark"] = dark theme (Astrobit's signature look)
+ */
+
+:root {
+  /* ---- brand ramp (violet) ---- */
+  --oks-palette-brand-50: #f3f0ff;
+  --oks-palette-brand-100: #e8e2ff;
+  --oks-palette-brand-200: #d3c6ff;
+  --oks-palette-brand-300: #b7a1ff;
+  --oks-palette-brand-400: #9d86ff;
+  --oks-palette-brand-500: #7c5cff;
+  --oks-palette-brand-600: #6a4cff;
+  --oks-palette-brand-700: #5a3ee0;
+  --oks-palette-brand-800: #4833b0;
+  --oks-palette-brand-900: #392c88;
+  --oks-palette-brand-950: #231a54;
+
+  /* ---- repoint oks-ui primary at the brand ramp (all 11 stops) ---- */
+  --oks-palette-primary-50: var(--oks-palette-brand-50);
+  --oks-palette-primary-100: var(--oks-palette-brand-100);
+  --oks-palette-primary-200: var(--oks-palette-brand-200);
+  --oks-palette-primary-300: var(--oks-palette-brand-300);
+  --oks-palette-primary-400: var(--oks-palette-brand-400);
+  --oks-palette-primary-500: var(--oks-palette-brand-500);
+  --oks-palette-primary-600: var(--oks-palette-brand-600);
+  --oks-palette-primary-700: var(--oks-palette-brand-700);
+  --oks-palette-primary-800: var(--oks-palette-brand-800);
+  --oks-palette-primary-900: var(--oks-palette-brand-900);
+  --oks-palette-primary-950: var(--oks-palette-brand-950);
+  --oks-color-primary-50: var(--oks-palette-brand-50);
+  --oks-color-primary-100: var(--oks-palette-brand-100);
+  --oks-color-primary-200: var(--oks-palette-brand-200);
+  --oks-color-primary-300: var(--oks-palette-brand-300);
+  --oks-color-primary-400: var(--oks-palette-brand-400);
+  --oks-color-primary-500: var(--oks-palette-brand-500);
+  --oks-color-primary-600: var(--oks-palette-brand-600);
+  --oks-color-primary-700: var(--oks-palette-brand-700);
+  --oks-color-primary-800: var(--oks-palette-brand-800);
+  --oks-color-primary-900: var(--oks-palette-brand-900);
+  --oks-color-primary-950: var(--oks-palette-brand-950);
+
+  /* ---- semantic roles (light) ---- */
+  --oks-palette-success-50: #e7f8f0;  --oks-palette-success-100: #c6efdd;
+  --oks-palette-success-200: #93e2c1; --oks-palette-success-300: #5bd3a3;
+  --oks-palette-success-400: #2ec389; --oks-palette-success-500: #16b67e;
+  --oks-palette-success-600: #0f9568; --oks-palette-success-700: #0d7553;
+  --oks-palette-success-800: #0b5c43; --oks-palette-success-900: #0a4a37;
+  --oks-palette-success-950: #052a20;
+  --oks-palette-warning-50: #fdf3e3;  --oks-palette-warning-100: #f9e2bd;
+  --oks-palette-warning-200: #f3c886; --oks-palette-warning-300: #ecad4f;
+  --oks-palette-warning-400: #e59b32; --oks-palette-warning-500: #df9626;
+  --oks-palette-warning-600: #bd7a17; --oks-palette-warning-700: #955f14;
+  --oks-palette-warning-800: #764b14; --oks-palette-warning-900: #613e14;
+  --oks-palette-warning-950: #371f08;
+  --oks-palette-danger-50: #fdecef;   --oks-palette-danger-100: #fbd2d9;
+  --oks-palette-danger-200: #f6a7b4;  --oks-palette-danger-300: #f07c8f;
+  --oks-palette-danger-400: #ec5f77;  --oks-palette-danger-500: #e8556a;
+  --oks-palette-danger-600: #cf3852;  --oks-palette-danger-700: #a92a41;
+  --oks-palette-danger-800: #892536;  --oks-palette-danger-900: #722331;
+  --oks-palette-danger-950: #400e17;
+  --oks-palette-info-50: #eaf3fe;     --oks-palette-info-100: #cfe3fc;
+  --oks-palette-info-200: #a3caf8;    --oks-palette-info-300: #6fabf3;
+  --oks-palette-info-400: #4b98f1;    --oks-palette-info-500: #3b8ef0;
+  --oks-palette-info-600: #2470cc;    --oks-palette-info-700: #1f59a1;
+  --oks-palette-info-800: #1f4b82;    --oks-palette-info-900: #1e406c;
+  --oks-palette-info-950: #142842;
+
+  /* ---- radii ---- */
+  --oks-radius-sm: 9px;
+  --oks-radius-md: 13px;
+  --oks-radius-lg: 18px;
+  --oks-radius-xl: 20px;
+  --oks-radius-2xl: 24px;
+
+  /* ---- oks-ui surface + form-field so primitives sit on Astrobit surfaces ---- */
+  --oks-color-surface: #ffffff;
+  --oks-form-field-bg: #f5f6fb;
+  --oks-form-field-fg: #171a23;
+  --oks-form-field-placeholder: #9097a8;
+  --oks-form-field-label: #171a23;
+  --oks-form-field-muted: #5a6173;
+  --oks-form-field-border: #11142024;
+  --oks-form-field-border-hover: #6a4cff;
+
+  /* ================= the --app-* layer (light) ================= */
+  --app-bg: #eef0f5;
+  --app-surface: #ffffff;
+  --app-surface-2: #f3f4f9;
+  --app-surface-inset: #f5f6fb;
+  --app-border: #11142014;
+  --app-border-strong: #11142024;
+
+  --app-fg-strong: #171a23;
+  --app-fg: #2c3242;
+  --app-fg-muted: #5a6173;
+  --app-fg-subtle: #9097a8;
+
+  --app-accent: #6a4cff;
+  --app-accent-2: #8b6dff;
+  --app-accent-soft: #6a4cff1c;
+  --app-accent-contrast: #ffffff;
+
+  --app-ok: #16b67e;      --app-ok-soft: #16b67e1f;
+  --app-bad: #e8556a;     --app-bad-soft: #e8556a1f;
+  --app-warn: #df9626;    --app-warn-soft: #df962624;
+  --app-info: #3b8ef0;    --app-info-soft: #3b8ef01f;
+
+  --app-card-radius: 18px;
+  --app-card-border: 1px solid var(--app-border);
+  --app-card-shadow: 0 14px 34px -18px #14182838;
+
+  /* sidebar */
+  --app-menu-bg: #ffffff;
+  --app-menu-fg: #5a6173;
+  --app-menu-fg-muted: #9097a8;
+  --app-menu-active-bg: var(--app-accent-soft);
+  --app-menu-active-fg: var(--app-accent);
+  --app-menu-hover-bg: #f3f4f9;
+  --app-menu-border: var(--app-border);
+  --app-menu-heading: #9097a8;
+
+  /* header */
+  --app-header-bg: #ffffffcc;
+  --app-header-height: 61px;
+  --app-header-border: var(--app-border);
+
+  --app-sidebar-w: 258px;
+  --app-sidebar-w-mini: 74px;
+  --app-content-max: 1360px;
+
+  /* semantic aliases — so components can say primary/success/warning/danger and
+     get the same values as accent/ok/warn/bad. These reference other --app-*
+     tokens, so they cascade correctly into the dark theme. */
+  --app-primary: var(--app-accent);       --app-primary-soft: var(--app-accent-soft);
+  --app-success: var(--app-ok);            --app-success-soft: var(--app-ok-soft);
+  --app-warning: var(--app-warn);          --app-warning-soft: var(--app-warn-soft);
+  --app-danger: var(--app-bad);            --app-danger-soft: var(--app-bad-soft);
+  /* --app-info / --app-info-soft already defined above */
+}
+
+:root[data-theme="dark"] {
+  /* keep the brand ramp; nudge the entry point brighter for dark surfaces */
+  --oks-palette-brand-500: #7c5cff;
+  --oks-palette-brand-600: #8f74ff;
+
+  --oks-color-surface: #12141d;
+  --oks-form-field-bg: #0c0e15;
+  --oks-form-field-fg: #f3f4f9;
+  --oks-form-field-placeholder: #5f6678;
+  --oks-form-field-label: #f3f4f9;
+  --oks-form-field-muted: #9aa1b2;
+  --oks-form-field-border: #ffffff21;
+  --oks-form-field-border-hover: #7c5cff;
+
+  /* semantic roles (dark-tuned) */
+  --oks-palette-success-500: #33d493; --oks-palette-success-600: #33d493;
+  --oks-palette-success-50: #0f2a22;  --oks-palette-success-100: #123a2d;
+  --oks-palette-warning-500: #f7b84e; --oks-palette-warning-600: #f7b84e;
+  --oks-palette-warning-50: #33260f;  --oks-palette-warning-100: #402f12;
+  --oks-palette-danger-500: #f76d7d;  --oks-palette-danger-600: #f76d7d;
+  --oks-palette-danger-50: #331b20;   --oks-palette-danger-100: #40232a;
+  --oks-palette-info-500: #56a8ff;    --oks-palette-info-600: #56a8ff;
+  --oks-palette-info-50: #14283f;     --oks-palette-info-100: #17324c;
+
+  /* ================= the --app-* layer (dark) ================= */
+  --app-bg: #090a0f;
+  --app-surface: #12141d;
+  --app-surface-2: #1a1d28;
+  --app-surface-inset: #0c0e15;
+  --app-border: #ffffff12;
+  --app-border-strong: #ffffff21;
+
+  --app-fg-strong: #f3f4f9;
+  --app-fg: #d7dae3;
+  --app-fg-muted: #9aa1b2;
+  --app-fg-subtle: #5f6678;
+
+  --app-accent: #7c5cff;
+  --app-accent-2: #9d86ff;
+  --app-accent-soft: #7c5cff26;
+  --app-accent-contrast: #ffffff;
+
+  --app-ok: #33d493;      --app-ok-soft: #33d49324;
+  --app-bad: #f76d7d;     --app-bad-soft: #f76d7d24;
+  --app-warn: #f7b84e;    --app-warn-soft: #f7b84e29;
+  --app-info: #56a8ff;    --app-info-soft: #56a8ff24;
+
+  --app-card-shadow: 0 18px 40px -22px #000000b3;
+
+  --app-menu-bg: #0c0e15;
+  --app-menu-fg: #9aa1b2;
+  --app-menu-fg-muted: #5f6678;
+  --app-menu-hover-bg: #ffffff0a;
+  --app-menu-border: var(--app-border);
+  --app-menu-heading: #5f6678;
+
+  --app-header-bg: #0c0e15cc;
+  --app-header-border: var(--app-border);
+}
+
+/* page ground — the host paints behind the app, so be explicit */
+body {
+  background: var(--app-bg);
+  color: var(--app-fg);
+}
+
+/* utility: tabular figures for tables / stat values */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/*
+ * oks-ui <Chart type="donut"> always paints a centre total with no opt-out or
+ * slot (logged in OKS-UI-FEEDBACK.md as a major gap). DonutCard renders its own
+ * centre value, so suppress the built-in one on any chart it wraps.
+ */
+.donut-no-center svg > g > text[text-anchor="middle"][dominant-baseline="middle"] {
+  display: none;
+}
+
+/*
+ * oks-ui <Chart> renders its own bordered/padded <figure> container. Every chart
+ * in Astrobit already lives inside a Surface / ChartCard, so strip the inner
+ * frame to avoid a card-in-a-card. (Logged in OKS-UI-FEEDBACK.md as B-list dx.)
+ */
+.oksChart {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/*
+ * oks-ui <Tabs variant="solid"> paints a hardcoded near-white track that does
+ * not adapt to the dark theme (logged in OKS-UI-FEEDBACK.md). Re-skin our
+ * SegmentedControl wrapper so the "Revenue / Orders / Sessions" toggle reads
+ * correctly in both themes.
+ */
+.astro-seg .oksTablist {
+  background: var(--app-surface-2) !important;
+  padding: 3px !important;
+  border-radius: 10px !important;
+  gap: 2px !important;
+}
+.astro-seg .oksTabsTab {
+  background: transparent !important;
+  color: var(--app-fg-muted) !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+  padding: 5px 12px !important;
+}
+.astro-seg .oksTabsTab[data-selected="true"] {
+  background: var(--app-surface) !important;
+  color: var(--app-fg-strong) !important;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.14) !important;
+}
