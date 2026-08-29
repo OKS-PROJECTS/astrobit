@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
+import { Code2 } from "lucide-react";
 import { Chip } from "oks-ui";
-import { APP_VERSION } from "../../data/app";
+import { APP_VERSION, REPO_URL } from "../../data/app";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -14,6 +15,15 @@ export function Footer() {
         <NavLink to="/pages/changelog" className="hover:underline">Changelog</NavLink>
         <NavLink to="/utility/documentation" className="hover:underline">Docs</NavLink>
         <NavLink to="/utility/help-center" className="hover:underline">Support</NavLink>
+        <a
+          href={REPO_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1 hover:underline"
+        >
+          <Code2 size={13} />
+          Repository
+        </a>
         <Chip size="xs" variant="soft" color="default">v{APP_VERSION}</Chip>
       </div>
     </footer>

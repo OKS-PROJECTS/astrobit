@@ -1,4 +1,5 @@
 export const APP_VERSION = "1.0.0";
+export const REPO_URL = "https://github.com/OKS-PROJECTS/astrobit";
 
 export const NOTIFICATIONS = [
   { id: "n1", title: "Priya Raman published the Q3 revenue report.", time: "12 minutes ago", unread: true },
