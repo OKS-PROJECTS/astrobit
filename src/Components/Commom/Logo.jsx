@@ -1,20 +1,46 @@
 import { cx } from "../../lib/cx";
 
-/** Astrobit wordmark. The mark is an original triangular glyph, not a reference logo. */
-export function Logo({ compact = false, className }) {
+/**
+ * The official OKS mark ("O · K S"). Marks use `currentColor` so they follow the
+ * theme; the dot is always OKS red. Do not substitute an invented glyph.
+ */
+export function OksMark({ size = 26, className, style, title = "OKS" }) {
   return (
-    <span className={cx("flex items-center gap-2 select-none", className)}>
-      <span
-        className="grid h-8 w-8 shrink-0 place-items-center rounded-[10px]"
-        style={{ background: "var(--app-accent)", color: "var(--app-accent-contrast)" }}
-      >
-        <svg width="17" height="17" viewBox="0 0 32 32" fill="none" aria-hidden>
-          <path d="M16 5l10 18H6L16 5z" fill="currentColor" opacity="0.95" />
-          <circle cx="16" cy="21" r="3.4" fill="var(--app-accent)" />
-        </svg>
-      </span>
+    <svg
+      width={size}
+      height={(size * 140) / 143}
+      viewBox="0 0 143 140"
+      fill="none"
+      role="img"
+      aria-label={title}
+      className={className}
+      style={style}
+    >
+      <path
+        d="M0 34.6063C0 29.5738 0.821617 24.9662 2.46485 20.7834C4.17382 16.5352 6.57294 12.8752 9.66222 9.80347C12.7515 6.66636 16.3995 4.24817 20.6062 2.5489C24.8128 0.849633 29.4796 0 34.6065 0C39.602 0 44.203 0.849633 48.4097 2.5489C52.6821 4.24817 56.3629 6.66636 59.4522 9.80347C62.5415 12.8752 64.9078 16.5352 66.551 20.7834C68.26 24.9662 69.1145 29.5738 69.1145 34.6063C69.1145 39.6387 68.26 44.279 66.551 48.5272C64.9078 52.71 62.5415 56.37 59.4522 59.5071C56.3629 62.5788 52.6821 64.9644 48.4097 66.6636C44.203 68.2975 39.602 69.1145 34.6065 69.1145C29.4796 69.1145 24.8128 68.2975 20.6062 66.6636C16.3995 64.9644 12.7515 62.5788 9.66222 59.5071C6.57294 56.37 4.17382 52.71 2.46485 48.5272C0.821617 44.279 0 39.6387 0 34.6063ZM14.6905 34.6063C14.6905 38.7237 15.545 42.3183 17.254 45.3901C18.9629 48.4618 21.2963 50.8474 24.2541 52.5466C27.2777 54.2459 30.7285 55.0955 34.6065 55.0955C38.4188 55.0955 41.8039 54.2459 44.7617 52.5466C47.7853 50.8474 50.1515 48.4618 51.8605 45.3901C53.5695 42.3183 54.4239 38.691 54.4239 34.5082C54.4239 30.3908 53.5695 26.7962 51.8605 23.7244C50.1515 20.6526 47.7853 18.2998 44.7617 16.6659C41.8039 14.9666 38.4188 14.117 34.6065 14.117C30.7285 14.117 27.2777 14.9666 24.2541 16.6659C21.2963 18.3652 18.9629 20.7507 17.254 23.8224C15.545 26.8288 14.6905 30.4234 14.6905 34.6063Z"
+        fill="currentColor"
+      />
+      <rect x="73.1144" y="42.5486" width="26.5659" height="26.5659" rx="13.2829" fill="#ED0D11" />
+      <path
+        d="M17.8594 102.395L46.9736 70.1145H69.1143L32.6914 110.498L58.3496 139.229H35.2734L17.8594 119.422V139.229H0V70.1145H17.8594V102.395Z"
+        fill="currentColor"
+      />
+      <path
+        d="M86.2453 139.229H85.0666L85.9162 138.698C86.0241 138.877 86.1355 139.053 86.2453 139.229ZM108.02 70.1145C116.196 70.1145 123.088 71.7374 128.697 74.9827C134.314 78.1783 138.824 82.3464 142.229 87.4856V87.8362L126.131 99.0364C123.659 95.791 120.664 93.4525 117.147 92.0208C113.724 90.589 110.302 89.8733 106.879 89.8733C102.791 89.8733 99.6061 90.6843 97.3244 92.3069C95.1378 93.8341 94.0441 96.0302 94.0441 98.8938C94.0442 101.566 95.1854 103.81 97.467 105.623C99.7487 107.341 104.217 108.964 110.872 110.491C118.858 112.401 125.276 114.739 130.124 117.507C134.973 120.275 138.49 123.663 140.677 127.672C141.277 128.772 141.793 129.933 142.229 131.155V139.229H121.637C121.42 138.789 121.161 138.373 120.855 137.982C119.904 136.55 118.145 135.214 115.578 133.973C113.011 132.732 109.303 131.538 104.454 130.393C96.5637 128.484 90.2894 126.097 85.631 123.234C81.0678 120.37 77.8352 116.982 75.9338 113.069C74.229 109.474 73.2908 105.534 73.1144 101.249V98.2385C73.3381 93.1297 74.7054 88.5753 77.217 84.5754C80.069 80.0893 84.1094 76.5579 89.3381 73.9807C94.5669 71.4035 100.794 70.1145 108.02 70.1145Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+/** OKS mark + the Astrobit product wordmark. `onDark` forces white for coloured panels. */
+export function Logo({ compact = false, onDark = false, className }) {
+  const color = onDark ? "#ffffff" : "var(--app-fg-strong)";
+  return (
+    <span className={cx("flex items-center gap-2.5 select-none", className)}>
+      <OksMark size={compact ? 26 : 24} className="shrink-0" style={{ color }} />
       {!compact && (
-        <span className="text-[17px] font-extrabold tracking-[-0.02em]" style={{ color: "var(--app-fg-strong)" }}>
+        <span className="text-[17px] font-extrabold tracking-[-0.02em]" style={{ color }}>
           Astrobit
         </span>
       )}

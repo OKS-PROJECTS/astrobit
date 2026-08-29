@@ -11,7 +11,7 @@ function SplitLayout({ children }) {
         className="relative hidden flex-col justify-between overflow-hidden p-12 lg:flex"
         style={{ background: "linear-gradient(160deg, var(--app-accent) 0%, #1a1150 60%, #0b0a1e 100%)" }}
       >
-        <Logo />
+        <Logo onDark />
         <div className="relative z-10">
           <h2 className="max-w-sm text-[30px] font-extrabold leading-tight tracking-[-0.02em] text-white">
             The analytics workspace teams actually enjoy using.
