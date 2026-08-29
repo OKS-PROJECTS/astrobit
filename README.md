@@ -5,6 +5,8 @@ every button, input, chart, menu and table cell is an oks-ui primitive or
 composed from oks-ui primitives. No second UI library, no second charting
 library.
 
+**Repository:** <https://github.com/OKS-PROJECTS/astrobit>
+
 - **Stack:** Vite + React 19 · react-router-dom v7 · Tailwind v4 (layout only) ·
   lucide-react · oks-ui
 - **Theme:** dark-first, light included, one `src/styles/theme.css`
