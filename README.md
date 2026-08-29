@@ -7,6 +7,8 @@ library.
 
 **Repository:** <https://github.com/OKS-PROJECTS/astrobit>
 
+![Astrobit — analytics dashboard](.github/media/dashboard-dark.png)
+
 - **Stack:** Vite + React 19 · react-router-dom v7 · Tailwind v4 (layout only) ·
   lucide-react · oks-ui
 - **Theme:** dark-first, light included, one `src/styles/theme.css`
@@ -44,6 +46,12 @@ light, dark and every component follow automatically.
 
 See [CHANGELOG.md](./CHANGELOG.md) for release history and the compatible oks-ui
 range.
+
+## Screenshots
+
+| Component gallery | Team members (list archetype) |
+| --- | --- |
+| ![Component gallery](.github/media/components.png) | ![Team members list](.github/media/users.png) |
 
 ## License
 
