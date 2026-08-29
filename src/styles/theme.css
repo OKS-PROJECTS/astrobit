@@ -243,6 +243,23 @@ body {
 }
 
 /*
+ * oks-ui `Button variant="bordered" | "ghost"` with the default colour uses
+ * `--oks-color-default-500` (#757682) for its text + border — too low-contrast
+ * on Astrobit's near-black background (fails on light too). Repoint the button
+ * tone at the readable --app-* text/border tokens. Logged in OKS-UI-FEEDBACK.md.
+ */
+.oksButton[data-variant="bordered"][data-color="default"],
+.oksButton[data-variant="ghost"][data-color="default"] {
+  --oks-button-tone: var(--app-fg-muted);
+  --oks-button-tone-hover: var(--app-fg-strong);
+  --oks-button-tone-active: var(--app-fg-strong);
+  color: var(--app-fg) !important;
+}
+.oksButton[data-variant="bordered"][data-color="default"] {
+  border-color: var(--app-border-strong) !important;
+}
+
+/*
  * oks-ui <Tabs variant="solid"> paints a hardcoded near-white track that does
  * not adapt to the dark theme (logged in OKS-UI-FEEDBACK.md). Re-skin our
  * SegmentedControl wrapper so the "Revenue / Orders / Sessions" toggle reads

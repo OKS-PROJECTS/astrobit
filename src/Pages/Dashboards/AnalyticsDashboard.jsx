@@ -59,7 +59,7 @@ export default function AnalyticsDashboard() {
         <KpiCard label="Avg. order value" value={money(128.5, { decimals: 2 })} delta={-2.1} icon={MousePointerClick} tone="warning" spark={spark(58, 14, 6, -0.6)} />
       </StatGroup>
 
-      <div className="mb-5 grid gap-5 lg:grid-cols-3">
+      <div className="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-3">
         <Surface className="flex flex-col lg:col-span-2">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
@@ -108,7 +108,7 @@ export default function AnalyticsDashboard() {
         />
       </div>
 
-      <div className="mb-5 grid gap-5 lg:grid-cols-3">
+      <div className="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-3">
         <Surface className="lg:col-span-1">
           <CardHeader title="Conversion funnel" description="Last 30-day journey" />
           <ul className="mt-4 space-y-3">
@@ -155,7 +155,7 @@ export default function AnalyticsDashboard() {
         </Surface>
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         <Surface>
           <CardHeader title="Recent activity" actions={<Button size="sm" variant="link">All</Button>} divider />
           <Timeline items={ACTIVITY} />

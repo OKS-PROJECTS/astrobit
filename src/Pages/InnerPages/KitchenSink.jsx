@@ -44,7 +44,7 @@ export default function KitchenSink() {
         breadcrumb={{ trail: [{ label: "Components", to: "/components" }], current: "Kitchen Sink" }}
       />
 
-      <div className="grid gap-5 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         <Block title="Overlays">
           <div className="flex flex-wrap gap-3">
             <Button color="primary" onPress={() => setModal(true)}>Open modal</Button>

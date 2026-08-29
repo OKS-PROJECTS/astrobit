@@ -102,7 +102,7 @@ export function RoadmapPage() {
   return (
     <div>
       <PageHeader title="Roadmap" subtitle="What we're building next." breadcrumb={{ trail: [{ label: "Pages" }], current: "Roadmap" }} />
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {Object.entries(ROADMAP).map(([col, items]) => (
           <div key={col}>
             <div className="mb-3 flex items-center gap-2">
@@ -140,7 +140,7 @@ export function StarterKitPage() {
   return (
     <div>
       <PageHeader title="Starter kit" subtitle="From clone to production in five steps." breadcrumb={{ trail: [{ label: "Pages" }], current: "Starter Kit" }} />
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         <div className="space-y-3 lg:col-span-2">
           {STARTER_STEPS.map((s, i) => (
             <Surface key={s.t} className="flex gap-4">
@@ -198,7 +198,7 @@ export function HelpCenterPage() {
       <div className="mx-auto mb-6 max-w-xl">
         <TextField value={q} onChange={setQ} variant="soft" placeholder="Search the help center…" startIcon={<Search size={16} />} aria-label="Search help" />
       </div>
-      <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {HELP_CATS.map((c) => (
           <Surface key={c.name} interactive className="flex items-center gap-3">
             <span className="grid h-9 w-9 place-items-center rounded-[10px]" style={{ background: "var(--app-accent-soft)", color: "var(--app-accent)" }}>
@@ -237,7 +237,7 @@ export function KnowledgeBasePage() {
   return (
     <div>
       <PageHeader title="Knowledge base" subtitle="In-depth documentation for every feature." breadcrumb={{ trail: [{ label: "Utility" }], current: "Knowledge Base" }} />
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         {groups.map((g) => (
           <Surface key={g.name}>
             <CardHeader title={g.name} divider />
@@ -271,7 +271,7 @@ export function DocumentationPage() {
   return (
     <div>
       <PageHeader title="Documentation" subtitle="How Astrobit is put together." breadcrumb={{ trail: [{ label: "Utility" }], current: "Documentation" }} />
-      <div className="grid gap-5 lg:grid-cols-[200px_1fr]">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[200px_1fr]">
         <Surface padded="sm" className="h-max">
           <nav className="space-y-0.5">
             {DOC_SECTIONS.map((s) => (
@@ -367,7 +367,7 @@ export function WidgetGalleryPage() {
   return (
     <div>
       <PageHeader title="Widget gallery" subtitle="Drop-in dashboard widgets, all composed from oks-ui." breadcrumb={{ trail: [{ label: "Pages" }], current: "Widget Gallery" }} />
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {["KPI card", "Sparkline stat", "Donut + legend", "Meter list", "Timeline", "Conversion funnel", "Data table", "Board column", "Empty state"].map((w) => (
           <Surface key={w} interactive>
             <p className="text-[13px] font-semibold" style={{ color: "var(--app-fg-strong)" }}>{w}</p>

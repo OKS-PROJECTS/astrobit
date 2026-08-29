@@ -74,7 +74,7 @@ export function FileUploadPage() {
   return (
     <div>
       <PageHeader title="File upload" subtitle="oks-ui FileField — inline, dropzone, previews, limits." breadcrumb={crumb("File Upload")} />
-      <div className="grid gap-5 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         <Block title="Dropzone with thumbnails">
           <FileField label="Product images" ui="dropzone" isDroppable preview="thumbnails" maxFiles={5} />
         </Block>
@@ -96,7 +96,7 @@ export function DatePickersPage() {
   return (
     <div>
       <PageHeader title="Date pickers" subtitle="oks-ui DatePickerField — single, range, presets, time." breadcrumb={crumb("Date Pickers")} />
-      <div className="grid gap-5 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         <Block title="Single date"><DatePickerField label="Start date" clearable /></Block>
         <Block title="Date range"><DatePickerField label="Reporting period" range /></Block>
         <Block title="Range with presets"><DatePickerField label="Filter by date" range showPresets /></Block>
@@ -113,7 +113,7 @@ export function SelectComponentsPage() {
   return (
     <div>
       <PageHeader title="Select components" subtitle="oks-ui SelectField — native, custom, multi, chips." breadcrumb={crumb("Select Components")} />
-      <div className="grid gap-5 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         <Block title="Custom single">
           <SelectField label="Country" placeholderOption="Choose a country" options={opt(["United States", "Germany", "Japan", "Brazil", "Australia"])} />
         </Block>
@@ -142,7 +142,7 @@ export function InputMasksPage() {
   return (
     <div>
       <PageHeader title="Input masks" subtitle="Formatted inputs from oks-ui field primitives." breadcrumb={crumb("Input Masks")} />
-      <div className="grid gap-5 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         <Block title="Phone">
           <PhoneField label="Phone number" defaultCountryCode="US" />
         </Block>

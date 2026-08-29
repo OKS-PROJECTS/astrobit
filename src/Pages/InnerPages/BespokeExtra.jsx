@@ -32,13 +32,13 @@ export function StatisticsPage() {
         <KpiCard tone="success" label="Sessions" value={number(184200)} delta={6.4} icon={Activity} spark={spark(46, 12, 7)} />
         <KpiCard tone="warning" label="Bounce rate" value="38.2%" delta={-1.4} positiveIsGood={false} icon={MousePointerClick} spark={spark(40, 10, 9, -0.5)} />
       </StatGroup>
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <ChartCard title="Traffic over time" height={280} chartProps={{ type: "area", data: REVENUE_TREND, x: "month", series: [{ key: "sessions", name: "Sessions" }, { key: "orders", name: "Orders" }], legend: true, line: { curve: "smooth", area: { show: true, fill: { opacity: 0.12 } } } }} />
         </div>
         <DonutCard title="Devices" data={[{ label: "Desktop", value: 58 }, { label: "Mobile", value: 34 }, { label: "Tablet", value: 8 }]} centerValue={number(184200, { compact: true })} centerLabel="sessions" height={172} />
       </div>
-      <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {[
           { label: "Pages / session", value: "4.2" },
           { label: "Avg. session", value: "3m 41s" },
@@ -57,7 +57,7 @@ export function KpiAnalyticsPage() {
   return (
     <div>
       <PageHeader title="KPI analytics" subtitle="Targets vs actuals across the business." breadcrumb={{ trail: [{ label: "Charts & Analytics" }], current: "KPI Analytics" }} />
-      <div className="mb-5 grid gap-5 lg:grid-cols-2">
+      <div className="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
         <Surface>
           <CardHeader title="Goal attainment" description="This quarter" divider />
           <MeterList
@@ -212,7 +212,7 @@ export function SalesFunnelPage() {
   return (
     <div>
       <PageHeader title="Sales funnel" subtitle="Conversion through every stage this quarter." breadcrumb={{ trail: [{ label: "CRM" }], current: "Sales Funnel" }} />
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         <Surface className="lg:col-span-2">
           <CardHeader title="Stage-to-stage conversion" divider />
           <ul className="space-y-4">
@@ -261,7 +261,7 @@ export function CustomerJourneyPage() {
   return (
     <div>
       <PageHeader title="Customer journey" subtitle="Every stage from first touch to renewal." breadcrumb={{ trail: [{ label: "CRM" }], current: "Customer Journey" }} />
-      <div className="grid gap-4 md:grid-cols-5">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
         {JOURNEY.map((j, i) => (
           <Surface key={j.stage} className="relative">
             <span className="text-[11px] font-bold tnum" style={{ color: "var(--app-fg-subtle)" }}>0{i + 1}</span>

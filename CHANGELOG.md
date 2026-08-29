@@ -44,6 +44,18 @@ All notable changes to Astrobit are documented here. The format follows
 - Scroll position resets to the top of the content on every route change.
 - `--app-primary/-success/-warning/-danger` semantic alias tokens.
 
+### Fixed
+
+- **Mobile layout**: responsive grids now declare a base `grid-cols-1` so wide
+  children (tables, charts) no longer force the content area past the viewport —
+  every route is horizontal-scroll-free down to 320px.
+- `Button variant="bordered"/"ghost"` with the default colour was near-invisible
+  on the dark background — repointed at the readable `--app-*` text/border tokens.
+- KPI cards are 2-up on phones (sparkline hidden) and 4-up from `lg`.
+- Settings side-nav switches from a vertical rail to a horizontal tab bar on
+  narrow screens.
+- Email / chat list rows truncate the subject and preview on their own lines.
+
 ### Notes
 
 - Charts are oks-ui `<Chart>` only. No second UI, charting, form, validation or

@@ -28,7 +28,7 @@ export default function ReportPage({ config }) {
           ))}
         </StatGroup>
       )}
-      <div className="mb-5 grid gap-5 lg:grid-cols-2">
+      <div className="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
         {charts.map((c, i) => (
           <ChartCard key={i} title={c.title} description={c.description} height={c.height || 260} chartProps={c} />
         ))}

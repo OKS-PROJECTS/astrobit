@@ -21,7 +21,7 @@ export function GalleryIndex() {
         actions={<Button as={Link} to="/components/kitchen-sink" color="primary" endContent={<ArrowRight size={15} />}>Kitchen sink</Button>}
       />
 
-      <div className="mb-6 grid gap-4 sm:grid-cols-3">
+      <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Surface className="flex items-start gap-3">
           <span className="grid h-9 w-9 place-items-center rounded-[11px]" style={{ background: "var(--app-accent-soft)", color: "var(--app-accent)" }}>
             <Puzzle size={17} />
@@ -54,7 +54,7 @@ export function GalleryIndex() {
       {Object.entries(groups).map(([group, entries]) => (
         <section key={group} className="mb-8">
           <h2 className="mb-3 text-[11px] font-bold uppercase tracking-[0.06em]" style={{ color: "var(--app-fg-subtle)" }}>{group}</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {entries.map((e) => (
               <Link key={e.slug} to={`/components/${e.slug}`}>
                 <Surface interactive className="h-full">

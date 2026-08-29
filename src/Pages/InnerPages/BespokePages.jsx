@@ -49,7 +49,7 @@ export function PricingPage() {
           <Tab key="annual" title="Annual · save 20%" />
         </Tabs>
       </div>
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         {PLANS.map((p) => (
           <Surface key={p.name} className={p.featured ? "ring-2" : ""} style={p.featured ? { boxShadow: "var(--app-card-shadow)", "--tw-ring-color": "var(--app-accent)" } : undefined}>
             <div className="flex items-center justify-between">
@@ -110,7 +110,7 @@ export function ChartsPage({ kind }) {
         </StatGroup>
       )}
 
-      <div className="grid gap-5 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         {(kind === "line-area" || kind === "revenue" || kind === "users") && (
           <>
             <ChartCard title="Smooth line" height={260} chartProps={{ type: "line", data: REVENUE_TREND, x: "month", series: [{ key: "revenue", name: "Revenue" }], line: { curve: "smooth" }, dataFormat: { prefix: "$", format: "compact" } }} />

@@ -40,12 +40,12 @@ export default function DetailPage({ config }) {
         </StatGroup>
       )}
 
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         <div className="space-y-5 lg:col-span-2">
           {sections.map((section, i) => (
             <Surface key={i}>
               <CardHeader title={section.title} divider />
-              <dl className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
+              <dl className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
                 {section.rows.map((row) => (
                   <div key={row.label} className={cx(row.full && "sm:col-span-2")}>
                     <dt className="text-[11.5px] uppercase tracking-[0.04em]" style={{ color: "var(--app-fg-subtle)" }}>

@@ -51,7 +51,7 @@ export default function DashboardPage({ config }) {
         ))}
       </StatGroup>
 
-      <div className="mb-5 grid gap-5 lg:grid-cols-3">
+      <div className="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <ChartCard title={mainChart.title} description={mainChart.description} height={mainChart.height || 300} chartProps={mainChart} />
         </div>
@@ -64,7 +64,7 @@ export default function DashboardPage({ config }) {
       </div>
 
       {(secondaryChart || timeline) && (
-        <div className="mb-5 grid gap-5 lg:grid-cols-3">
+        <div className="mb-5 grid grid-cols-1 gap-5 lg:grid-cols-3">
           {secondaryChart && (
             <div className="lg:col-span-2">
               <ChartCard title={secondaryChart.title} description={secondaryChart.description} height={secondaryChart.height || 260} chartProps={secondaryChart} />

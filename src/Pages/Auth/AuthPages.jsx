@@ -6,7 +6,7 @@ import { Logo } from "../../Components/Commom/Logo";
 
 function SplitLayout({ children }) {
   return (
-    <div className="grid min-h-full lg:grid-cols-2" style={{ background: "var(--app-bg)" }}>
+    <div className="grid grid-cols-1 min-h-full lg:grid-cols-2" style={{ background: "var(--app-bg)" }}>
       <div
         className="relative hidden flex-col justify-between overflow-hidden p-12 lg:flex"
         style={{ background: "linear-gradient(160deg, var(--app-accent) 0%, #1a1150 60%, #0b0a1e 100%)" }}

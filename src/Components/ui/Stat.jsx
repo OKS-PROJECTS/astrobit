@@ -53,11 +53,11 @@ export function KpiCard({
   const t = TONE[tone] || TONE.primary;
   const role = sparkRole || t.role;
   return (
-    <Surface className="flex flex-col">
+    <Surface padded="sm" className="flex flex-col sm:!p-5">
       <div className="flex items-start justify-between">
         {Icon && (
           <span
-            className="grid h-9 w-9 place-items-center rounded-[10px]"
+            className="grid h-8 w-8 place-items-center rounded-[10px] sm:h-9 sm:w-9"
             style={{ background: t.soft, color: t.fg }}
           >
             <Icon size={17} />
@@ -67,10 +67,10 @@ export function KpiCard({
           <TrendChip value={delta} suffix={deltaSuffix} positiveIsGood={positiveIsGood} />
         )}
       </div>
-      <p className="mt-4 text-[12.5px]" style={{ color: "var(--app-fg-muted)" }}>
+      <p className="mt-3 text-[12px] sm:mt-4 sm:text-[12.5px]" style={{ color: "var(--app-fg-muted)" }}>
         {label}
       </p>
-      <p className="mt-1 text-[26px] font-bold leading-none tnum" style={{ color: "var(--app-fg-strong)" }}>
+      <p className="mt-1 text-[22px] font-bold leading-none tnum sm:text-[26px]" style={{ color: "var(--app-fg-strong)" }}>
         {value}
       </p>
       {hint && (
@@ -79,7 +79,7 @@ export function KpiCard({
         </p>
       )}
       {spark && (
-        <div className="mt-3 -mx-1">
+        <div className="mt-3 -mx-1 hidden sm:block">
           <Chart
             type="line"
             height={34}
@@ -101,10 +101,14 @@ export function KpiCard({
   );
 }
 
-/** Responsive row of KPI cards. */
+/** Responsive row of KPI cards — 2-up on phones, then 2/3/4 as space allows. */
 export function StatGroup({ children, cols = 4, className }) {
-  const map = { 2: "sm:grid-cols-2", 3: "sm:grid-cols-2 lg:grid-cols-3", 4: "sm:grid-cols-2 xl:grid-cols-4" };
-  return <div className={cx("grid grid-cols-1 gap-4 xl:gap-5", map[cols] || map[4], className)}>{children}</div>;
+  const map = {
+    2: "grid-cols-1 sm:grid-cols-2",
+    3: "grid-cols-2 lg:grid-cols-3",
+    4: "grid-cols-2 lg:grid-cols-4",
+  };
+  return <div className={cx("grid gap-3 sm:gap-4 xl:gap-5", map[cols] || map[4], className)}>{children}</div>;
 }
 
 /** Compact label/value stat for use inside cards. */

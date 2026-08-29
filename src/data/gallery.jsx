@@ -116,7 +116,7 @@ export const GALLERY = {
     builtFrom: "div + --oks-color-surface + radius + shadow tokens",
     description: "The Surface primitive — oks-ui ships no Card. Used for every panel in Astrobit.",
     render: () => (
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="rounded-[var(--app-card-radius)] border p-5" style={{ background: "var(--app-surface)", borderColor: "var(--app-border)", boxShadow: "var(--app-card-shadow)" }}>
           <p className="text-[14px] font-semibold" style={{ color: "var(--app-fg-strong)" }}>Standard surface</p>
           <p className="mt-1 text-[12.5px]" style={{ color: "var(--app-fg-muted)" }}>Border, radius and shadow all from tokens.</p>

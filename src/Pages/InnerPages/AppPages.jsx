@@ -74,14 +74,14 @@ function ChatBase({ title, subtitle, breadcrumb, channels }) {
                         {c.online && <span className="absolute -bottom-0 -right-0 h-2.5 w-2.5 rounded-full border-2" style={{ background: "var(--app-ok)", borderColor: "var(--app-surface)" }} />}
                       </span>
                     )}
-                    <span className="min-w-0 flex-1">
+                    <span className="block min-w-0 flex-1">
                       <span className="flex items-center justify-between gap-2">
                         <span className="truncate text-[12.5px] font-medium" style={{ color: "var(--app-fg-strong)" }}>
                           {channels ? `#${c.name}` : c.name}
                         </span>
                         <span className="shrink-0 text-[10.5px]" style={{ color: "var(--app-fg-subtle)" }}>{c.time || `${c.members}`}</span>
                       </span>
-                      <span className="truncate text-[11.5px]" style={{ color: "var(--app-fg-muted)" }}>
+                      <span className="block truncate text-[11.5px]" style={{ color: "var(--app-fg-muted)" }}>
                         {channels ? `${c.members} members` : c.last}
                       </span>
                     </span>
@@ -199,13 +199,13 @@ export function EmailPage() {
                     style={{ borderColor: "var(--app-border)", background: e.id === openId ? "var(--app-menu-hover-bg)" : "transparent" }}
                   >
                     <Avatar src={e.avatar} name={e.from} classNames={{ base: "!h-8 !w-8 shrink-0" }} />
-                    <span className="min-w-0 flex-1">
+                    <span className="block min-w-0 flex-1">
                       <span className="flex items-center justify-between gap-2">
                         <span className="truncate text-[12.5px]" style={{ color: "var(--app-fg-strong)", fontWeight: e.read ? 400 : 600 }}>{e.from}</span>
                         <span className="shrink-0 text-[10.5px]" style={{ color: "var(--app-fg-subtle)" }}>{e.time}</span>
                       </span>
-                      <span className="truncate text-[12px]" style={{ color: "var(--app-fg)", fontWeight: e.read ? 400 : 500 }}>{e.subject}</span>
-                      <span className="truncate text-[11.5px]" style={{ color: "var(--app-fg-subtle)" }}>{e.preview}</span>
+                      <span className="block truncate text-[12px]" style={{ color: "var(--app-fg)", fontWeight: e.read ? 400 : 500 }}>{e.subject}</span>
+                      <span className="block truncate text-[11.5px]" style={{ color: "var(--app-fg-subtle)" }}>{e.preview}</span>
                     </span>
                   </button>
                 </li>
@@ -331,7 +331,7 @@ export function ContactsPage() {
         actions={<Button size="sm" color="primary" startContent={<Plus size={15} />}>Add contact</Button>}
       />
       <div className="mb-4"><SearchInput value={q} onChange={setQ} placeholder="Search contacts" /></div>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {rows.map((c) => (
           <Surface key={c.id} className="flex flex-col items-center text-center" interactive>
             <div className="flex w-full justify-end">
@@ -412,7 +412,7 @@ export function FileManagerPage() {
           </>
         }
       />
-      <div className="mb-4 grid gap-4 sm:grid-cols-3">
+      <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
         {[
           { label: "Storage used", value: "142 GB", hint: "of 250 GB" },
           { label: "Files", value: "1,284", hint: "across 38 folders" },
@@ -481,7 +481,7 @@ export function HelpDeskPage() {
           </Surface>
         ))}
       </div>
-      <div className="grid gap-4 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
         {cols.map((col) => (
           <div key={col.key} className="flex flex-col gap-3">
             <div className="flex items-center gap-2 px-1 text-[12.5px] font-semibold" style={{ color: "var(--app-fg-strong)" }}>
