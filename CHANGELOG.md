@@ -4,7 +4,7 @@ All notable changes to Astrobit are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the project adheres to
 [Semantic Versioning](https://semver.org/).
 
-> Requires oks-ui ^1.1.1
+> Requires oks-ui ^1.1.2
 
 ## [1.1.0] — 2026-09-01
 
@@ -25,16 +25,21 @@ All notable changes to Astrobit are documented here. The format follows
     icon rail + hover flyout) driven through `renderItem` for router links.
   - The ⌘K palette is the real `CommandPalette`.
   - Heatmaps page uses `Chart type="heatmap"` instead of a div grid.
-- Removed the `theme.css` `!important` overrides that patched B1 (donut centre),
-  B11 (chart `<figure>` frame — now `unstyled`) and B12 (solid tab track — now
-  a theme-aware `SegmentedControl`). Added `--oks-color-border` to both themes.
-- `TextField` toolbar search uses the new borderless `filled` variant.
-- Bumped the oks-ui dependency to `^1.1.1`.
-
-### Still patched
-
-- `Button variant="bordered"/"ghost"` default colour (`#757682`) still fails
-  contrast in 1.1.1 — `theme.css` keeps the token repoint (feedback B14).
+- Removed every `theme.css` oks-ui component override:
+  - B1 (donut centre), B11 (chart `<figure>` frame — now `unstyled`), B12 (solid
+    tab track — now a theme-aware `SegmentedControl`) — removed with the 1.1.0 layer.
+  - B14 (`Button` bordered/ghost `default` contrast) — removed once **oks-ui
+    1.1.2** lifted the resting label to `--oks-color-default-700` in both themes.
+  `theme.css` now carries **zero `.oks*` selectors** — only token values.
+- Added `--oks-color-border` to both themes; `TextField` toolbar search uses the
+  new borderless `filled` variant.
+- **oks-ui 1.1.2 follow-up:** its token blocks became zero-specificity
+  (`:where()`), so Astrobit's bare-`:root` semantic ramps started winning in dark
+  for the stops it hadn't re-declared — soft `Chip` / `Alert` text rendered
+  dark-on-dark. Fixed by completing the reversed dark ramp
+  (`--oks-palette-{success,warning,danger,info,brand}-{50,100,200,300,400,700,800,900,950}`)
+  in the `:root[data-theme="dark"]` block.
+- Bumped the oks-ui dependency to `^1.1.2`.
 
 ## [1.0.0] — 2026-08-29
 

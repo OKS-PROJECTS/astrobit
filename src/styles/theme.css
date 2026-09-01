@@ -151,12 +151,20 @@
 }
 
 :root[data-theme="dark"] {
-  /* keep the brand ramp; nudge the entry point brighter for dark surfaces */
+  /* keep the brand ramp; nudge the entry point brighter for dark surfaces.
+   * -50/-100 get deep-violet tints (soft `Chip`/`Badge` backgrounds read them)
+   * since oks-ui 1.1.2's zero-specificity dark block no longer supplies them. */
+  --oks-palette-brand-50: #1b1633;
+  --oks-palette-brand-100: #241d40;
   --oks-palette-brand-500: #7c5cff;
   --oks-palette-brand-600: #8f74ff;
 
   --oks-color-surface: #12141d;
   --oks-color-border: var(--app-border);
+  /* oks-ui Modal / Drawer / Dropdown / CommandPalette panels read
+   * `--oks-palette-neutral-0` (light: #fff); its dark theme flips it to pure
+   * #000. Point it at the Astrobit surface so overlays match the app. */
+  --oks-palette-neutral-0: #12141d;
   --oks-form-field-bg: #0c0e15;
   --oks-form-field-fg: #f3f4f9;
   --oks-form-field-placeholder: #5f6678;
@@ -165,15 +173,31 @@
   --oks-form-field-border: #ffffff21;
   --oks-form-field-border-hover: #7c5cff;
 
-  /* semantic roles (dark-tuned) */
-  --oks-palette-success-500: #33d493; --oks-palette-success-600: #33d493;
+  /* semantic roles — full dark ramp.
+   * oks-ui 1.1.2 dropped its dark token block to zero specificity (`:where()`),
+   * so any --oks-palette stop NOT re-declared here falls through to the light
+   * `:root` ramp — which left soft `Chip` / `Alert` text (reads `-700`…`-900`)
+   * rendering dark-on-dark. So the whole ramp is reversed for dark here: low
+   * stops = deep tints, `-500`/`-600` = the vivid brand hue, high stops = light
+   * (the mirror of the light ramp, matching oks-ui's own dark palette shape). */
   --oks-palette-success-50: #0f2a22;  --oks-palette-success-100: #123a2d;
-  --oks-palette-warning-500: #f7b84e; --oks-palette-warning-600: #f7b84e;
+  --oks-palette-success-200: #0b5c43; --oks-palette-success-300: #0d7553; --oks-palette-success-400: #0f9568;
+  --oks-palette-success-500: #33d493; --oks-palette-success-600: #33d493;
+  --oks-palette-success-700: #5bd3a3; --oks-palette-success-800: #93e2c1; --oks-palette-success-900: #c6efdd; --oks-palette-success-950: #e7f8f0;
   --oks-palette-warning-50: #33260f;  --oks-palette-warning-100: #402f12;
-  --oks-palette-danger-500: #f76d7d;  --oks-palette-danger-600: #f76d7d;
+  --oks-palette-warning-200: #764b14; --oks-palette-warning-300: #955f14; --oks-palette-warning-400: #bd7a17;
+  --oks-palette-warning-500: #f7b84e; --oks-palette-warning-600: #f7b84e;
+  --oks-palette-warning-700: #ecad4f; --oks-palette-warning-800: #f3c886; --oks-palette-warning-900: #f9e2bd; --oks-palette-warning-950: #fdf3e3;
   --oks-palette-danger-50: #331b20;   --oks-palette-danger-100: #40232a;
-  --oks-palette-info-500: #56a8ff;    --oks-palette-info-600: #56a8ff;
+  --oks-palette-danger-200: #892536;  --oks-palette-danger-300: #a92a41;  --oks-palette-danger-400: #cf3852;
+  --oks-palette-danger-500: #f76d7d;  --oks-palette-danger-600: #f76d7d;
+  --oks-palette-danger-700: #f07c8f;  --oks-palette-danger-800: #f6a7b4;  --oks-palette-danger-900: #fbd2d9; --oks-palette-danger-950: #fdecef;
   --oks-palette-info-50: #14283f;     --oks-palette-info-100: #17324c;
+  --oks-palette-info-200: #1f4b82;    --oks-palette-info-300: #1f59a1;    --oks-palette-info-400: #2470cc;
+  --oks-palette-info-500: #56a8ff;    --oks-palette-info-600: #56a8ff;
+  --oks-palette-info-700: #6fabf3;    --oks-palette-info-800: #a3caf8;    --oks-palette-info-900: #cfe3fc;  --oks-palette-info-950: #eaf3fe;
+  --oks-palette-brand-200: #4833b0;   --oks-palette-brand-300: #5a3ee0;   --oks-palette-brand-400: #7c5cff;
+  --oks-palette-brand-700: #b7a1ff;   --oks-palette-brand-800: #d3c6ff;   --oks-palette-brand-900: #e8e2ff;  --oks-palette-brand-950: #f3f0ff;
 
   /* ================= the --app-* layer (dark) ================= */
   --app-bg: #090a0f;
@@ -224,18 +248,7 @@ body {
 }
 
 /*
- * oks-ui `Button variant="bordered" | "ghost"` with the default colour still
- * uses `--oks-color-default-500` (#757682) for its text + border in 1.1.1 — too
- * low-contrast on Astrobit's near-black background (fails on light too). Repoint
- * the button tone at the readable --app-* tokens. Still open — OKS-UI-FEEDBACK.md B14.
+ * No oks-ui component overrides remain. The B14 `Button` default-colour
+ * contrast repoint was removed once oks-ui 1.1.2 lifted the resting label to
+ * `--oks-color-default-700` in both themes (OKS-UI-FEEDBACK.md B14, resolved).
  */
-.oksButton[data-variant="bordered"][data-color="default"],
-.oksButton[data-variant="ghost"][data-color="default"] {
-  --oks-button-tone: var(--app-fg-muted);
-  --oks-button-tone-hover: var(--app-fg-strong);
-  --oks-button-tone-active: var(--app-fg-strong);
-  color: var(--app-fg) !important;
-}
-.oksButton[data-variant="bordered"][data-color="default"] {
-  border-color: var(--app-border-strong) !important;
-}

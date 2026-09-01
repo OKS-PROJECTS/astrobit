@@ -135,13 +135,20 @@ export function ChartsPage({ kind }) {
             <Surface>
               <CardHeader title="Semi-circle gauge" divider />
               <Chart
+                unstyled
                 type="pie"
-                height={220}
+                height={240}
                 data={[{ label: "Used", value: 72 }, { label: "Free", value: 28 }]}
                 x="label"
                 series="value"
-                pie={{ arc: "semi" }}
-                pieStyle={{ innerRatio: 0.7 }}
+                pie={{
+                  arc: "semi",
+                  donut: true,
+                  donutInnerRadiusRatio: 0.7,
+                  renderCenter: () => (
+                    <div className="text-[22px] font-bold tnum" style={{ color: "var(--app-fg-strong)" }}>72%</div>
+                  ),
+                }}
                 palette={{ colors: ["var(--app-accent)", "var(--app-surface-2)"] }}
                 legend={false}
                 tooltip={false}

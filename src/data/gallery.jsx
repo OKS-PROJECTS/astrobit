@@ -8,11 +8,13 @@ import {
   ButtonGroup,
   Chip,
   Divider,
+  Drawer,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
   Loader,
+  Modal,
   PageTitle,
   Tab,
   Tabs,
@@ -33,6 +35,68 @@ import {
 } from "../Components/ui";
 
 const Row = ({ children }) => <div className="flex flex-wrap items-center gap-3">{children}</div>;
+
+/** Live Modal + Drawer demo — needs local open state, so it's its own component. */
+function OverlayDemo() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  return (
+    <Row>
+      <Button color="primary" onPress={() => setModalOpen(true)}>Open modal</Button>
+      <Button variant="bordered" color="danger" onPress={() => setConfirmOpen(true)}>Confirm dialog</Button>
+      <Button variant="bordered" onPress={() => setDrawerOpen(true)}>Open drawer</Button>
+
+      <Modal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Invite teammates"
+        actions={
+          <>
+            <Button variant="bordered" onPress={() => setModalOpen(false)}>Cancel</Button>
+            <Button color="primary" onPress={() => setModalOpen(false)}>Send invites</Button>
+          </>
+        }
+      >
+        <p className="text-[13px]" style={{ color: "var(--app-fg-muted)" }}>
+          Add people to this workspace by email. They'll get an invite link that
+          expires in 7 days.
+        </p>
+      </Modal>
+
+      <Modal
+        isOpen={confirmOpen}
+        onClose={() => setConfirmOpen(false)}
+        role="alertdialog"
+        title="Delete project?"
+        actions={
+          <>
+            <Button variant="bordered" onPress={() => setConfirmOpen(false)}>Keep</Button>
+            <Button color="danger" onPress={() => setConfirmOpen(false)}>Delete</Button>
+          </>
+        }
+      >
+        <p className="text-[13px]" style={{ color: "var(--app-fg-muted)" }}>
+          This permanently removes the project and all of its tasks. This action
+          can't be undone.
+        </p>
+      </Modal>
+
+      <Drawer
+        isOpen={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        position="right"
+        title="Filters"
+        actions={<Button color="primary" onPress={() => setDrawerOpen(false)}>Apply</Button>}
+      >
+        <p className="text-[13px]" style={{ color: "var(--app-fg-muted)" }}>
+          A Drawer is the same controlled pattern as Modal, sliding in from an
+          edge — used for filters, details and record editors.
+        </p>
+      </Drawer>
+    </Row>
+  );
+}
 
 /**
  * Component gallery registry. Every entry is `primitive: true` — a raw oks-ui
@@ -129,6 +193,25 @@ export const GALLERY = {
     ),
     code: `<Surface>Standard card</Surface>
 <Surface tone="inset" padded="sm">Inset card</Surface>`,
+  },
+
+  modals: {
+    title: "Modals & drawers",
+    group: "Overlays",
+    primitive: true,
+    description: "oks-ui Modal (centred, controlled) and Drawer (edge slide-in). Use role=\"alertdialog\" for destructive confirms.",
+    render: () => <OverlayDemo />,
+    code: `const [open, setOpen] = useState(false);
+
+<Button onPress={() => setOpen(true)}>Open modal</Button>
+<Modal
+  isOpen={open}
+  onClose={() => setOpen(false)}
+  title="Invite teammates"
+  actions={<Button color="primary" onPress={() => setOpen(false)}>Send invites</Button>}
+>
+  …
+</Modal>`,
   },
 
   tabs: {

@@ -166,35 +166,41 @@ export default function AnalyticsDashboard() {
           <MeterList items={DEVICE_SPLIT} />
         </Surface>
 
-        <Surface className="flex flex-col justify-between">
+        <Surface className="flex flex-col">
           <CardHeader title="Monthly target" description="You're ahead of schedule" divider />
-          <div className="flex flex-1 flex-col items-center justify-center pt-2">
-            <div className="donut-no-center relative h-36 w-48">
+          <div className="flex flex-1 items-center justify-center py-2">
+            <div className="w-full max-w-[300px]">
               <Chart
+                unstyled
                 type="pie"
-                height={144}
+                height={210}
                 data={[
                   { label: "Reached", value: 78 },
                   { label: "Remaining", value: 22 },
                 ]}
                 x="label"
                 series="value"
-                pie={{ arc: "semi", donut: true }}
-                pieStyle={{ innerRatio: 0.74, borderWidth: 0 }}
+                pie={{
+                  arc: "semi",
+                  donut: true,
+                  donutInnerRadiusRatio: 0.72,
+                  renderCenter: () => (
+                    <div className="text-center leading-tight">
+                      <div className="text-[24px] font-bold tnum" style={{ color: "var(--app-fg-strong)" }}>78%</div>
+                      <div className="mt-0.5 text-[11px]" style={{ color: "var(--app-fg-subtle)" }}>
+                        {money(98400, { compact: true })} of {money(126000, { compact: true })}
+                      </div>
+                    </div>
+                  ),
+                }}
                 palette={{ colors: ["var(--app-accent)", "var(--app-surface-2)"] }}
                 legend={false}
                 tooltip={false}
                 showLabels={{ show: false }}
               />
-              <div className="absolute inset-x-0 bottom-1 text-center">
-                <span className="text-[24px] font-bold tnum" style={{ color: "var(--app-fg-strong)" }}>78%</span>
-                <p className="text-[11px]" style={{ color: "var(--app-fg-subtle)" }}>
-                  {money(98400, { compact: true })} of {money(126000, { compact: true })}
-                </p>
-              </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-3 border-t pt-3 text-center" style={{ borderColor: "var(--app-border)" }}>
+          <div className="mt-auto grid grid-cols-2 gap-3 border-t pt-3 text-center" style={{ borderColor: "var(--app-border)" }}>
             <div>
               <p className="text-[11px]" style={{ color: "var(--app-fg-subtle)" }}>Target</p>
               <p className="text-[14px] font-semibold tnum" style={{ color: "var(--app-fg-strong)" }}>{money(126000, { compact: true })}</p>
