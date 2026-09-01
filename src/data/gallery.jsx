@@ -35,9 +35,10 @@ import {
 const Row = ({ children }) => <div className="flex flex-wrap items-center gap-3">{children}</div>;
 
 /**
- * Component gallery registry. `primitive: true` entries showcase a raw oks-ui
- * export; `composed: true` entries showcase a src/Components/ui piece built
- * *from* oks-ui primitives (noted in `builtFrom`).
+ * Component gallery registry. Every entry is `primitive: true` — a raw oks-ui
+ * export (some via a thin src/Components/ui wrapper that only renames props).
+ * The one thing Astrobit still composes by hand is the app shell
+ * (Sidebar + Header + content frame) — deliberately not an oks-ui component.
  */
 export const GALLERY = {
   buttons: {
@@ -111,10 +112,9 @@ export const GALLERY = {
 
   cards: {
     title: "Cards",
-    group: "Composed",
-    composed: true,
-    builtFrom: "div + --oks-color-surface + radius + shadow tokens",
-    description: "The Surface primitive — oks-ui ships no Card. Used for every panel in Astrobit.",
+    group: "Data display",
+    primitive: true,
+    description: "oks-ui Card + CardHeader/CardBody/CardFooter (Astrobit's Surface wrapper). The panel behind every screen.",
     render: () => (
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="rounded-[var(--app-card-radius)] border p-5" style={{ background: "var(--app-surface)", borderColor: "var(--app-border)", boxShadow: "var(--app-card-shadow)" }}>
@@ -163,10 +163,9 @@ export const GALLERY = {
 
   accordions: {
     title: "Accordions",
-    group: "Composed",
-    composed: true,
-    builtFrom: "button[aria-expanded] + a grid height transition",
-    description: "Collapsible sections — oks-ui ships no accordion. Powers the FAQ page.",
+    group: "Navigation",
+    primitive: true,
+    description: "oks-ui Accordion + AccordionItem — single / multiple, grid-rows height transition. Powers the FAQ page.",
     render: () => (
       <Accordion
         single
@@ -226,10 +225,9 @@ export const GALLERY = {
 
   breadcrumbs: {
     title: "Breadcrumbs",
-    group: "Composed",
-    composed: true,
-    builtFrom: "nav > ol + react-router Link + a chevron separator",
-    description: "Trail navigation — oks-ui ships none. Part of every PageHeader.",
+    group: "Navigation",
+    primitive: true,
+    description: "oks-ui Breadcrumbs + BreadcrumbItem (router links via as={Link}). Part of every PageHeader.",
     render: () => (
       <div className="space-y-3">
         <Breadcrumbs trail={[{ label: "Dashboards", to: "/dashboards/analytics" }, { label: "Ecommerce" }]} current="Orders" />
@@ -278,20 +276,18 @@ export const GALLERY = {
 
   pagination: {
     title: "Pagination",
-    group: "Composed",
-    composed: true,
-    builtFrom: "Button isIconOnly + a numbered range + a results summary",
-    description: "oks-ui ships none. Drives every DataTable.",
+    group: "Navigation",
+    primitive: true,
+    description: "oks-ui Pagination + PaginationSummary (MUI-style windowing). Drives every DataTable footer.",
     render: () => <PaginationDemo />,
     code: `<Pagination page={page} pageCount={12} total={238} pageSize={20} onPage={setPage} />`,
   },
 
   progress: {
     title: "Progress",
-    group: "Composed",
-    composed: true,
-    builtFrom: "a div bar + --app-* tokens",
-    description: "Meters and meter lists — oks-ui ships no progress primitive.",
+    group: "Feedback",
+    primitive: true,
+    description: "oks-ui Progress / CircularProgress (Astrobit's Meter + MeterList). Determinate and indeterminate.",
     render: () => (
       <MeterList
         items={[
@@ -347,10 +343,9 @@ toast.promise(save(), { loading: "Syncing…", success: "Synced", error: "Failed
 
   timeline: {
     title: "Timeline",
-    group: "Composed",
-    composed: true,
-    builtFrom: "a div rail + dot markers + Avatar",
-    description: "Activity feed — oks-ui ships none. Used on dashboards and detail pages.",
+    group: "Data display",
+    primitive: true,
+    description: "oks-ui Timeline + TimelineItem — rail, connector, icon / avatar markers. Used on dashboards and detail pages.",
     render: () => (
       <Timeline
         items={[
@@ -384,10 +379,9 @@ toast.promise(save(), { loading: "Syncing…", success: "Synced", error: "Failed
 
   "empty-states": {
     title: "Empty states",
-    group: "Composed",
-    composed: true,
-    builtFrom: "an icon + PageTitle-style heading + Button",
-    description: "oks-ui ships none. Every list and table falls back to one.",
+    group: "Feedback",
+    primitive: true,
+    description: "oks-ui EmptyState — icon, title, description, actions. The default for an empty Table body.",
     render: () => (
       <div className="rounded-[var(--app-card-radius)] border" style={{ borderColor: "var(--app-border)" }}>
         <EmptyState

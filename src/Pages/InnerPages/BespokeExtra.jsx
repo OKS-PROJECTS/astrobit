@@ -87,43 +87,32 @@ const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const HOURS = ["6a", "8a", "10a", "12p", "2p", "4p", "6p", "8p", "10p"];
 
 export function HeatmapsPage() {
+  // heatmap model: one data row per column (hour), one series per row (day).
+  const data = HOURS.map((h, hi) => {
+    const col = { hour: h };
+    DAYS.forEach((d, di) => {
+      col[d] = Math.round((seeded(di * 10 + hi, 100, 3) / 100) * 400);
+    });
+    return col;
+  });
+
   return (
     <div>
       <PageHeader title="Heatmaps" subtitle="Activity intensity by day and hour." breadcrumb={{ trail: [{ label: "Charts & Analytics" }], current: "Heatmaps" }} />
-      <p className="mb-4 rounded-[12px] border px-3 py-2 text-[12px]" style={{ borderColor: "var(--app-border)", background: "var(--app-surface-inset)", color: "var(--app-fg-muted)" }}>
-        oks-ui <span style={{ color: "var(--app-fg-strong)" }}>&lt;Chart&gt;</span> has no heatmap type — this grid is composed from
-        <span style={{ color: "var(--app-fg-strong)" }}> tokened div cells</span> (logged in the feedback doc).
-      </p>
       <Surface className="overflow-x-auto">
         <CardHeader title="Sessions by day & hour" divider />
-        <div className="min-w-[520px]">
-          <div className="grid" style={{ gridTemplateColumns: `48px repeat(${HOURS.length}, 1fr)` }}>
-            <div />
-            {HOURS.map((h) => (
-              <div key={h} className="pb-1 text-center text-[10px]" style={{ color: "var(--app-fg-subtle)" }}>{h}</div>
-            ))}
-            {DAYS.flatMap((d, di) => [
-              <div key={`${d}-label`} className="flex items-center text-[10.5px]" style={{ color: "var(--app-fg-subtle)" }}>{d}</div>,
-              ...HOURS.map((h, hi) => {
-                const v = seeded(di * 10 + hi, 100, 3) / 100;
-                return (
-                  <div
-                    key={`${d}-${h}`}
-                    className="m-0.5 aspect-square rounded-[4px]"
-                    title={`${d} ${h}: ${Math.round(v * 400)} sessions`}
-                    style={{ background: `color-mix(in srgb, var(--app-accent) ${Math.round(v * 90) + 8}%, transparent)` }}
-                  />
-                );
-              }),
-            ])}
-          </div>
-        </div>
-        <div className="mt-4 flex items-center gap-2 text-[11px]" style={{ color: "var(--app-fg-subtle)" }}>
-          Less
-          {[10, 30, 50, 70, 90].map((p) => (
-            <span key={p} className="h-3 w-3 rounded-[3px]" style={{ background: `color-mix(in srgb, var(--app-accent) ${p}%, transparent)` }} />
-          ))}
-          More
+        <div className="mt-2 min-w-[520px]">
+          <Chart
+            unstyled
+            type="heatmap"
+            data={data}
+            x="hour"
+            series={DAYS.map((d) => ({ key: d, name: d }))}
+            height={280}
+            heatmap={{ color: "var(--app-accent)", showValues: false, cellRadius: 4, cellGap: 3 }}
+            legend={false}
+            tooltip={{ show: true }}
+          />
         </div>
       </Surface>
     </div>

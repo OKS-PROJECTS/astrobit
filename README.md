@@ -1,9 +1,10 @@
 # Astrobit
 
 An admin dashboard template built **entirely with [oks-ui](https://www.npmjs.com/package/oks-ui)** —
-every button, input, chart, menu and table cell is an oks-ui primitive or
-composed from oks-ui primitives. No second UI library, no second charting
-library.
+every button, input, chart, table, nav tree, board and command palette is an
+oks-ui component, used as shipped. The only thing assembled by hand is the app
+shell (sidebar + header + content frame). No second UI library, no second
+charting library.
 
 **Live demo:** <https://oks-projects.github.io/astrobit/> · **Repository:** <https://github.com/OKS-PROJECTS/astrobit>
 
@@ -26,12 +27,13 @@ npm run preview  # preview the production build
 
 ## How the `ui/` layer works
 
-oks-ui is a primitives + fields + charts library — it ships no application
-scaffolding. `src/Components/ui/` fills that gap: `Surface` (card), `DataTable`,
-`Pagination`, `Breadcrumbs`, `Sidebar`, `Timeline`, `EmptyState`, `Skeleton`,
-`MeterList`, `BoardView` and more, each composed only from oks-ui primitives and
-the `--app-*` design tokens. Composed pieces are labelled as such in the
-component gallery (`/components`).
+As of oks-ui 1.1, the library ships the whole application layer — `Card`,
+`Table`, `Pagination`, `Nav`, `Breadcrumbs`, `Board`, `Timeline`, `EmptyState`,
+`Skeleton`, `Progress`, `Accordion`, `SegmentedControl`, `CommandPalette` and
+more. `src/Components/ui/` is now just a **thin adapter layer**: each file
+(`Surface`, `DataTable`, `MeterList`, `BoardView`, …) renames props to Astrobit's
+vocabulary and wires the `--app-*` tokens, then delegates to the real oks-ui
+component. The one genuinely hand-built piece is the app shell.
 
 Most screens are **config objects, not bespoke components**. A list, form,
 detail view, settings panel, board or report is an entry in `src/data/*.jsx`

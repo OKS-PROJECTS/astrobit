@@ -16,7 +16,7 @@ export function GalleryIndex() {
     <div>
       <PageHeader
         title="Component gallery"
-        subtitle="Every screen in Astrobit is built from these — oks-ui primitives, and pieces composed from them."
+        subtitle="Every screen in Astrobit is built from these oks-ui components — used as shipped, no second UI library."
         breadcrumb={{ trail: [{ label: "Components" }], current: "Overview" }}
         actions={<Button as={Link} to="/components/kitchen-sink" color="primary" endContent={<ArrowRight size={15} />}>Kitchen sink</Button>}
       />
@@ -36,8 +36,8 @@ export function GalleryIndex() {
             <Layers size={17} />
           </span>
           <div>
-            <p className="text-[14px] font-semibold" style={{ color: "var(--app-fg-strong)" }}>Composed pieces</p>
-            <p className="mt-1 text-[12px]" style={{ color: "var(--app-fg-muted)" }}>Card, Table, Pagination, Sidebar — built from oks-ui.</p>
+            <p className="text-[14px] font-semibold" style={{ color: "var(--app-fg-strong)" }}>Data & app layer</p>
+            <p className="mt-1 text-[12px]" style={{ color: "var(--app-fg-muted)" }}>Card, Table, Nav, Board, CommandPalette — all shipped by oks-ui.</p>
           </div>
         </Surface>
         <Surface className="flex items-start gap-3">
@@ -60,9 +60,7 @@ export function GalleryIndex() {
                 <Surface interactive className="h-full">
                   <div className="flex items-center justify-between">
                     <p className="text-[14px] font-semibold" style={{ color: "var(--app-fg-strong)" }}>{e.title}</p>
-                    <Chip size="xs" variant="soft" color={e.composed ? "info" : "primary"}>
-                      {e.composed ? "composed" : "oks-ui"}
-                    </Chip>
+                    <Chip size="xs" variant="soft" color="primary">oks-ui</Chip>
                   </div>
                   <p className="mt-1.5 text-[12px] leading-snug" style={{ color: "var(--app-fg-muted)" }}>{e.description}</p>
                 </Surface>
@@ -98,17 +96,9 @@ export function GalleryDetail() {
         subtitle={entry.description}
         breadcrumb={{ trail: [{ label: "Components", to: "/components" }], current: entry.title }}
         actions={
-          <Chip variant="soft" color={entry.composed ? "info" : "primary"}>
-            {entry.composed ? "composed from oks-ui" : "oks-ui primitive"}
-          </Chip>
+          <Chip variant="soft" color="primary">oks-ui</Chip>
         }
       />
-
-      {entry.composed && entry.builtFrom && (
-        <p className="mb-4 rounded-[12px] border px-3 py-2 text-[12px]" style={{ borderColor: "var(--app-border)", background: "var(--app-surface-inset)", color: "var(--app-fg-muted)" }}>
-          Built from <span style={{ color: "var(--app-fg-strong)" }}>{entry.builtFrom}</span>. oks-ui ships no equivalent — logged in the feedback doc.
-        </p>
-      )}
 
       <Surface className="mb-5">
         <CardHeader title="Live example" divider />

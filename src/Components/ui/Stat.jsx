@@ -1,5 +1,5 @@
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
-import { Chart } from "oks-ui";
+import { Chart, Stat as OksStat, StatGroup as OksStatGroup } from "oks-ui";
 import { cx } from "../../lib/cx";
 import { Surface } from "./Surface";
 
@@ -11,7 +11,8 @@ const TONE = {
   danger: { fg: "var(--app-bad)", soft: "var(--app-bad-soft)", role: "danger" },
 };
 
-/** Trend pill — up/down arrow + delta. Composed (oks-ui Chip lacks a paired icon+sign convention). */
+/** Trend pill — up/down arrow + delta. Kept: it encodes Astrobit's `positiveIsGood`
+ *  convention, which the component's `trend` prop (pure up/down colour) can't. */
 export function TrendChip({ value, suffix = "%", positiveIsGood = true, className }) {
   const up = value >= 0;
   const good = up === positiveIsGood;
@@ -35,8 +36,9 @@ export function TrendChip({ value, suffix = "%", positiveIsGood = true, classNam
 }
 
 /**
- * KPI / stat card. oks-ui ships no Stat card — composed from Surface + TrendChip
- * + an optional Chart sparkline. Logged in OKS-UI-FEEDBACK.md.
+ * KPI / stat card — now the real oks-ui `Stat` (shipped in 1.1.0) wrapped in a
+ * Surface (Stat brings no surface of its own). Astrobit keeps the `tone` icon
+ * tint, the `positiveIsGood` trend pill and the sparkline recipe.
  */
 export function KpiCard({
   label,
@@ -53,73 +55,70 @@ export function KpiCard({
   const t = TONE[tone] || TONE.primary;
   const role = sparkRole || t.role;
   return (
-    <Surface padded="sm" className="flex flex-col sm:!p-5">
-      <div className="flex items-start justify-between">
-        {Icon && (
-          <span
-            className="grid h-8 w-8 place-items-center rounded-[10px] sm:h-9 sm:w-9"
-            style={{ background: t.soft, color: t.fg }}
-          >
-            <Icon size={17} />
-          </span>
-        )}
-        {typeof delta === "number" && (
-          <TrendChip value={delta} suffix={deltaSuffix} positiveIsGood={positiveIsGood} />
-        )}
-      </div>
-      <p className="mt-3 text-[12px] sm:mt-4 sm:text-[12.5px]" style={{ color: "var(--app-fg-muted)" }}>
-        {label}
-      </p>
-      <p className="mt-1 text-[22px] font-bold leading-none tnum sm:text-[26px]" style={{ color: "var(--app-fg-strong)" }}>
-        {value}
-      </p>
-      {hint && (
-        <p className="mt-1.5 text-[11.5px]" style={{ color: "var(--app-fg-subtle)" }}>
-          {hint}
-        </p>
-      )}
-      {spark && (
-        <div className="mt-3 -mx-1 hidden sm:block">
-          <Chart
-            type="line"
-            height={34}
-            data={spark.map((y, x) => ({ x, y }))}
-            x="x"
-            series={[{ key: "y", name: label }]}
-            palette={{ roles: [role] }}
-            grid={{ show: false }}
-            axisX={{ show: false }}
-            axisY={{ show: false }}
-            legend={false}
-            tooltip={false}
-            line={{ curve: "smooth", strokeWidth: 2, markers: { size: 0 } }}
-            padding={{ top: 4, right: 2, bottom: 2, left: 2 }}
-          />
-        </div>
-      )}
+    <Surface padded="sm" className="sm:!p-5">
+      <OksStat
+        label={label}
+        value={<span className="tnum">{value}</span>}
+        help={hint}
+        icon={
+          Icon ? (
+            <span
+              className="grid h-8 w-8 place-items-center rounded-[10px] sm:h-9 sm:w-9"
+              style={{ background: t.soft, color: t.fg }}
+            >
+              <Icon size={17} />
+            </span>
+          ) : undefined
+        }
+        delta={
+          typeof delta === "number" ? (
+            <TrendChip value={delta} suffix={deltaSuffix} positiveIsGood={positiveIsGood} />
+          ) : (
+            delta
+          )
+        }
+        spark={
+          spark ? (
+            <Chart
+              unstyled
+              type="line"
+              height={34}
+              data={spark.map((y, x) => ({ x, y }))}
+              x="x"
+              series={[{ key: "y", name: label }]}
+              palette={{ roles: [role] }}
+              grid={{ show: false }}
+              axisX={{ show: false }}
+              axisY={{ show: false }}
+              legend={false}
+              tooltip={false}
+              line={{ curve: "smooth", strokeWidth: 2, markers: { size: 0 } }}
+              padding={{ top: 4, right: 2, bottom: 2, left: 2 }}
+            />
+          ) : undefined
+        }
+      />
     </Surface>
   );
 }
 
-/** Responsive row of KPI cards — 2-up on phones, then 2/3/4 as space allows. */
+/** Responsive row of KPI cards. Now the real oks-ui `StatGroup` grid. */
 export function StatGroup({ children, cols = 4, className }) {
-  const map = {
-    2: "grid-cols-1 sm:grid-cols-2",
-    3: "grid-cols-2 lg:grid-cols-3",
-    4: "grid-cols-2 lg:grid-cols-4",
-  };
-  return <div className={cx("grid gap-3 sm:gap-4 xl:gap-5", map[cols] || map[4], className)}>{children}</div>;
+  return (
+    <OksStatGroup columns={cols} className={cx("gap-3 sm:gap-4 xl:gap-5", className)}>
+      {children}
+    </OksStatGroup>
+  );
 }
 
 /** Compact label/value stat for use inside cards. */
 export function Stat({ label, value, delta }) {
   return (
-    <div>
-      <p className="text-[11.5px]" style={{ color: "var(--app-fg-muted)" }}>{label}</p>
-      <div className="mt-0.5 flex items-baseline gap-2">
-        <span className="text-[18px] font-semibold tnum" style={{ color: "var(--app-fg-strong)" }}>{value}</span>
-        {typeof delta === "number" && <TrendChip value={delta} />}
-      </div>
-    </div>
+    <OksStat
+      label={label}
+      value={<span className="tnum">{value}</span>}
+      delta={typeof delta === "number" ? <TrendChip value={delta} /> : delta}
+      size="sm"
+    />
   );
 }

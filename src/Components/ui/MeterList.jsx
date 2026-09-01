@@ -1,32 +1,29 @@
+import { Progress } from "oks-ui";
 import { cx } from "../../lib/cx";
 
 /**
- * Progress bar / meter — oks-ui ships no progress primitive. A div bar +
- * --app-* tokens. Logged in OKS-UI-FEEDBACK.md.
+ * Progress bar / meter — now backed by oks-ui `Progress` (shipped in 1.1.0).
+ * Astrobit keeps the `Meter` + `MeterList` names and the `tone` vocabulary so
+ * call sites stay stable.
  */
-export function Meter({ value, max = 100, tone = "primary", className, height = 8 }) {
-  const pct = Math.max(0, Math.min(100, (value / max) * 100));
-  const color = {
-    primary: "var(--app-accent)",
-    success: "var(--app-ok)",
-    warning: "var(--app-warn)",
-    danger: "var(--app-bad)",
-    info: "var(--app-info)",
-  }[tone];
+const TONE = {
+  primary: "primary",
+  success: "success",
+  warning: "warning",
+  danger: "danger",
+  info: "info",
+};
+
+export function Meter({ value, max = 100, tone = "primary", className, size = "sm" }) {
   return (
-    <div
-      className={cx("w-full overflow-hidden rounded-full", className)}
-      style={{ background: "var(--app-surface-2)", height }}
-      role="progressbar"
-      aria-valuenow={Math.round(pct)}
-      aria-valuemin={0}
-      aria-valuemax={100}
-    >
-      <div
-        className="h-full rounded-full transition-[width] duration-500 motion-reduce:transition-none"
-        style={{ width: `${pct}%`, background: color }}
-      />
-    </div>
+    <Progress
+      value={value}
+      maxValue={max}
+      color={TONE[tone] || "primary"}
+      size={size}
+      aria-label="Progress"
+      className={cx("w-full", className)}
+    />
   );
 }
 

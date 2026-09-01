@@ -7,7 +7,7 @@ import { money, number } from "../../lib/cx";
 
 /* --------------------------------- FAQ --------------------------------- */
 const FAQS = [
-  { id: "1", q: "Is every component really built with oks-ui?", a: "Yes. Buttons, forms, charts, menus and overlays are oks-ui primitives. Cards, tables, the sidebar, pagination, breadcrumbs and a few others are composed from oks-ui primitives and tokens — there is no second UI or charting library anywhere." },
+  { id: "1", q: "Is every component really built with oks-ui?", a: "Yes. Buttons, forms, charts, overlays, and now the data layer too — Card, Table, Nav, Pagination, Breadcrumbs, Board, Timeline and the ⌘K command palette are all oks-ui components as shipped. The only thing Astrobit assembles by hand is the app shell (sidebar + header + content frame). No second UI or charting library anywhere." },
   { id: "2", q: "How do I rebrand Astrobit?", a: "Edit src/styles/theme.css. Repoint the brand ramp and the --app-* layer; light, dark and every component follow automatically." },
   { id: "3", q: "Where does the data come from?", a: "There is no backend. Every figure is deterministic mock data generated in src/data/, seeded so it never changes between reloads." },
   { id: "4", q: "Can I add pages without writing components?", a: "Most screens — lists, forms, detail views, settings, boards, reports and dashboards — are config objects consumed by an archetype component. Add an entry, wire the route, done." },

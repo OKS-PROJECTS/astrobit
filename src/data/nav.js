@@ -28,8 +28,7 @@ import {
  * NAV_ROUTES — a flat, de-duplicated list of every `to`. Drives the
  *              ComingSoon fallback in App.jsx.
  *
- * oks-ui ships no Sidebar / nav-tree — this data plus src/Components/Commom/Sidebar.jsx
- * is the composed replacement (logged in OKS-UI-FEEDBACK.md).
+ * The tree that feeds the oks-ui `Nav` in src/Components/Commom/Sidebar.jsx.
  */
 export const NAV = [
   {

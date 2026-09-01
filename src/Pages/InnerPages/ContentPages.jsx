@@ -293,7 +293,7 @@ export function DocumentationPage() {
           <Accordion
             className="mt-6"
             items={[
-              { id: "a", title: "Is oks-ui the only UI library?", content: "Yes. No MUI, no ApexCharts, no react-hook-form. Composed pieces are built from oks-ui primitives + tokens." },
+              { id: "a", title: "Is oks-ui the only UI library?", content: "Yes. No MUI, no ApexCharts, no react-hook-form. Even the data layer — Table, Nav, Board, command palette — is oks-ui as shipped. Only the app shell is hand-assembled." },
               { id: "b", title: "Can I use TypeScript?", content: "The template ships in JavaScript, but the archetype pattern translates directly to .tsx." },
             ]}
           />

@@ -3,13 +3,13 @@ import { Surface, CardHeader } from "./Surface";
 
 /**
  * ChartCard — a Surface wrapper around oks-ui `<Chart>` (the only charting tool).
- * Keeps chart cards visually consistent: shared header + a themed default set.
- * Line / area charts render clean (no gridlines, no Y-axis, no point markers) to
- * match the reference; bar / column keep a subtle horizontal grid + axis.
+ * The chart renders `unstyled` (oks-ui 1.1.0 — drops the built-in <figure> frame,
+ * replacing the `.oksChart` !important override from OKS-UI-FEEDBACK.md B11) so
+ * the Surface is the single frame.
+ * Line / area charts render clean (no gridlines, no Y-axis, no point markers);
+ * bar / column keep a subtle horizontal grid + axis.
  */
 export function ChartCard({ title, description, actions, height = 280, children, chartProps, footer }) {
-  // Chart draws its own title/description block — strip them so the card header
-  // is the single source of truth.
   const { title: _t, description: _d, ...chart } = chartProps || {};
   const isLiney = chart.type === "line" || chart.type === "area";
 
@@ -32,6 +32,7 @@ export function ChartCard({ title, description, actions, height = 280, children,
       <div className="mt-2 flex-1">
         {chartProps ? (
           <Chart
+            unstyled
             height={height}
             palette={{ roles: ["primary", "info", "success", "warning", "danger"] }}
             legend={chart.legend ?? false}

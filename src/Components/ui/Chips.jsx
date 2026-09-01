@@ -35,13 +35,12 @@ export function EntityCell({ name, sub, src, initials, square = false, icon }) {
   return (
     <div className="flex items-center gap-3 min-w-0">
       <Avatar
-        size="sm"
+        size={32}
         src={src}
         name={name}
         radius={square ? "md" : "full"}
         icon={icon}
         className="shrink-0"
-        classNames={{ base: "!h-8 !w-8" }}
       >
         {initials}
       </Avatar>

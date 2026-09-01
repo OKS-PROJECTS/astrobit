@@ -4,7 +4,37 @@ All notable changes to Astrobit are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the project adheres to
 [Semantic Versioning](https://semver.org/).
 
-> Requires oks-ui ^1.0.3
+> Requires oks-ui ^1.1.1
+
+## [1.1.0] — 2026-09-01
+
+### Changed
+
+- **Adopted the oks-ui 1.1 application layer.** oks-ui 1.1.0 shipped the 17
+  components Astrobit had been composing by hand. Every `src/Components/ui/*`
+  piece is now a thin wrapper over the real export (same props, so call sites
+  are unchanged) and the shell uses the shipped components directly:
+  - `Surface` → `Card`; `DataTable` → `Table`; `Pagination` → `Pagination` +
+    `PaginationSummary`; `Breadcrumbs` → `Breadcrumbs` + `BreadcrumbItem`;
+    `KpiCard`/`Stat` → `Stat` + `StatGroup`; `EmptyState` → `EmptyState`;
+    `Skeleton` → `Skeleton`; `Timeline` → `Timeline` + `TimelineItem`;
+    `Meter`/`MeterList` → `Progress`; `Accordion` → `Accordion` +
+    `AccordionItem`; `BoardView` → `Board`; `SegmentedControl` → the real
+    `SegmentedControl`.
+  - `Sidebar` is now the oks-ui `Nav` (multi-level tree, single-open, collapsed
+    icon rail + hover flyout) driven through `renderItem` for router links.
+  - The ⌘K palette is the real `CommandPalette`.
+  - Heatmaps page uses `Chart type="heatmap"` instead of a div grid.
+- Removed the `theme.css` `!important` overrides that patched B1 (donut centre),
+  B11 (chart `<figure>` frame — now `unstyled`) and B12 (solid tab track — now
+  a theme-aware `SegmentedControl`). Added `--oks-color-border` to both themes.
+- `TextField` toolbar search uses the new borderless `filled` variant.
+- Bumped the oks-ui dependency to `^1.1.1`.
+
+### Still patched
+
+- `Button variant="bordered"/"ghost"` default colour (`#757682`) still fails
+  contrast in 1.1.1 — `theme.css` keeps the token repoint (feedback B14).
 
 ## [1.0.0] — 2026-08-29
 

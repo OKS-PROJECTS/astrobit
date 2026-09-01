@@ -3,15 +3,14 @@ import { Button, Chip, TextField } from "oks-ui";
 import { cx } from "../../lib/cx";
 
 /**
- * SearchInput — oks-ui `TextField` has no borderless "filled" resting variant
- * for a toolbar search bar; we approximate with the `soft` variant + startIcon.
- * Logged in OKS-UI-FEEDBACK.md (missing-variant).
+ * SearchInput — oks-ui 1.1.0 added the borderless `filled` TextField variant
+ * (OKS-UI-FEEDBACK.md B5): no border at rest, subtle fill, border + ring on focus.
  */
 export function SearchInput({ value, onChange, placeholder = "Search…", className }) {
   return (
     <TextField
       type="search"
-      variant="soft"
+      variant="filled"
       size="sm"
       value={value}
       onChange={onChange}

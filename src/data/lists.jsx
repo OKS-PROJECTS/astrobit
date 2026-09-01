@@ -345,10 +345,10 @@ export const LIST_CONFIGS = {
 
 // Alias routes that should render the same list config.
 LIST_CONFIGS["/orders"] = { ...LIST_CONFIGS["/ecommerce/orders"], breadcrumb: crumb([], "Orders") };
-LIST_CONFIGS["/tables/data"] = { ...LIST_CONFIGS["/users"], title: "Data table", subtitle: "Sortable, filterable, paginated — composed from a semantic table + oks-ui primitives.", breadcrumb: crumb(["Tables & Forms"], "Data Table") };
+LIST_CONFIGS["/tables/data"] = { ...LIST_CONFIGS["/users"], title: "Data table", subtitle: "Sortable, filterable, paginated — the oks-ui Table.", breadcrumb: crumb(["Tables & Forms"], "Data Table") };
 LIST_CONFIGS["/tables/basic"] = { ...LIST_CONFIGS["/products/list"], title: "Basic table", subtitle: "A straightforward record list.", breadcrumb: crumb(["Tables & Forms"], "Basic Table"), stats: [], filters: [], selectable: false };
 LIST_CONFIGS["/tables/filter"] = { ...LIST_CONFIGS["/ecommerce/orders"], title: "Filter table", subtitle: "Search plus quick filter chips.", breadcrumb: crumb(["Tables & Forms"], "Filter Table"), stats: [] };
-LIST_CONFIGS["/components/data-table"] = { ...LIST_CONFIGS["/users"], title: "Data table", subtitle: "The composed DataTable — oks-ui ships no table primitive.", breadcrumb: crumb(["Components"], "Data Table") };
+LIST_CONFIGS["/components/data-table"] = { ...LIST_CONFIGS["/users"], title: "Data table", subtitle: "The oks-ui Table — column config, client sort, row select, pagination.", breadcrumb: crumb(["Components"], "Data Table") };
 LIST_CONFIGS["/products"] = { ...LIST_CONFIGS["/products/list"], title: "Products", subtitle: "The full catalogue.", breadcrumb: crumb(["Ecommerce"], "Product Grid") };
 LIST_CONFIGS["/ecommerce/customers"] = { ...LIST_CONFIGS["/crm/customers"], breadcrumb: crumb(["Ecommerce"], "Customers") };
 LIST_CONFIGS["/tables/responsive"] = { ...LIST_CONFIGS["/hr/employees"], title: "Responsive table", subtitle: "Reflows and scrolls on narrow viewports.", breadcrumb: crumb(["Tables & Forms"], "Responsive Table"), stats: [] };

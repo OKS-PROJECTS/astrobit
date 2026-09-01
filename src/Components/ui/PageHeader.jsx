@@ -1,41 +1,31 @@
 import { Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
+import { Breadcrumbs as OksBreadcrumbs, BreadcrumbItem } from "oks-ui";
 import { cx } from "../../lib/cx";
 
 /**
- * Breadcrumbs — oks-ui ships none. `nav > ol` + Link + separator. Logged.
+ * Breadcrumbs — now the real oks-ui `Breadcrumbs` + `BreadcrumbItem`
+ * (shipped in 1.1.0). Astrobit keeps the `{ trail, current }` shape used by
+ * every PageHeader; router links go through `as={Link}`.
  */
 export function Breadcrumbs({ trail = [], current }) {
   return (
-    <nav aria-label="Breadcrumb">
-      <ol className="flex flex-wrap items-center gap-1.5 text-[12px]">
-        {trail.map((c, i) => (
-          <li key={i} className="flex items-center gap-1.5">
-            {c.to ? (
-              <Link
-                to={c.to}
-                className="transition-colors hover:underline"
-                style={{ color: "var(--app-fg-muted)" }}
-              >
-                {c.label}
-              </Link>
-            ) : (
-              <span style={{ color: "var(--app-fg-muted)" }}>{c.label}</span>
-            )}
-            <ChevronRight size={13} style={{ color: "var(--app-fg-subtle)" }} />
-          </li>
-        ))}
-        <li aria-current="page" style={{ color: "var(--app-fg-strong)" }} className="font-medium">
-          {current}
-        </li>
-      </ol>
-    </nav>
+    <OksBreadcrumbs aria-label="Breadcrumb">
+      {trail.map((c, i) =>
+        c.to ? (
+          <BreadcrumbItem key={i} as={Link} to={c.to}>
+            {c.label}
+          </BreadcrumbItem>
+        ) : (
+          <BreadcrumbItem key={i}>{c.label}</BreadcrumbItem>
+        )
+      )}
+      <BreadcrumbItem isCurrent>{current}</BreadcrumbItem>
+    </OksBreadcrumbs>
   );
 }
 
 /**
  * Page-header band: breadcrumb + title + subtitle + actions cluster.
- * Composed from oks-ui typography conventions + tokens.
  */
 export function PageHeader({ title, subtitle, breadcrumb, actions, className }) {
   return (

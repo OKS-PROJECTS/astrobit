@@ -1,26 +1,23 @@
-import { Tab, Tabs } from "oks-ui";
+import { SegmentedControl as OksSegmentedControl } from "oks-ui";
 
 /**
- * SegmentedControl — a thin wrapper around oks-ui `Tabs` (`variant="solid"`)
- * for the "Revenue / Orders / Sessions" style toggle used on dashboards and
- * chart cards. Kept as a named component so call sites read cleanly.
+ * SegmentedControl — now the real oks-ui `SegmentedControl` (shipped in 1.1.0,
+ * theme-aware track — replaces the `Tabs variant="solid"` + `.astro-seg`
+ * re-skin from OKS-UI-FEEDBACK.md B12). Astrobit keeps the string-array
+ * `options` shape used by the dashboards.
  */
 export function SegmentedControl({ options = [], value, onChange, size = "sm" }) {
+  const opts = options.map((o) =>
+    typeof o === "string" ? { label: o, value: o } : o
+  );
   return (
-    <div className="astro-seg w-max shrink-0 self-start">
-      <Tabs
-        size={size}
-        variant="solid"
-        color="default"
-        radius="lg"
-        selectedKey={value}
-        onSelectionChange={(k) => onChange?.(k)}
-        aria-label="View"
-      >
-        {options.map((o) => (
-          <Tab key={o} title={o} />
-        ))}
-      </Tabs>
-    </div>
+    <OksSegmentedControl
+      options={opts}
+      value={value}
+      onChange={onChange}
+      size={size}
+      aria-label="View"
+      className="w-max shrink-0 self-start"
+    />
   );
 }

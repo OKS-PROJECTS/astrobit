@@ -1,13 +1,16 @@
+import { Card } from "oks-ui";
 import { cx } from "../../lib/cx";
 
 /**
- * Card / surface container. oks-ui ships no Card primitive — this is the
- * composed replacement (a div + --app-* tokens). Logged in OKS-UI-FEEDBACK.md.
+ * Card / surface container. Now backed by oks-ui `Card` (shipped in 1.1.0).
+ * Astrobit keeps the `Surface` name + `padded` / `tone` / `interactive` props so
+ * call sites stay stable; padding is applied on the card base (Astrobit puts one
+ * padding value on the whole surface rather than per-section).
  *
  * props: as, padded (bool | "sm"), interactive (hover lift), tone ("plain"|"inset")
  */
 export function Surface({
-  as: Tag = "div",
+  as,
   padded = true,
   interactive = false,
   tone = "plain",
@@ -17,11 +20,14 @@ export function Surface({
   ...rest
 }) {
   return (
-    <Tag
+    <Card
+      as={as}
+      isHoverable={interactive}
+      shadow="none"
+      radius="lg"
       className={cx(
-        "relative rounded-[var(--app-card-radius)] border transition-shadow duration-200",
+        "transition-shadow duration-200",
         padded === "sm" ? "p-4" : padded ? "p-5" : "p-0",
-        interactive && "hover:-translate-y-0.5 hover:shadow-lg motion-reduce:transform-none",
         className
       )}
       style={{
@@ -33,7 +39,7 @@ export function Surface({
       {...rest}
     >
       {children}
-    </Tag>
+    </Card>
   );
 }
 
