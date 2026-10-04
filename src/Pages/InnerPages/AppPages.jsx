@@ -114,13 +114,13 @@ function ChatBase({ title, subtitle, breadcrumb, channels }) {
                   <Avatar src={m.avatar} name={m.name} classNames={{ base: "!h-6 !w-6" }} />
                   <div className={cx("max-w-[70%] rounded-2xl px-3 py-2 text-[12.5px]")}
                     style={{
-                      background: m.mine ? "var(--app-accent)" : "var(--app-surface)",
+                      background: m.mine ? "var(--app-accent-solid)" : "var(--app-surface)",
                       color: m.mine ? "#fff" : "var(--app-fg)",
                       border: m.mine ? "none" : "1px solid var(--app-border)",
                     }}
                   >
                     {m.text}
-                    <span className={cx("mt-1 block text-[10px]")} style={{ color: m.mine ? "rgba(255,255,255,.7)" : "var(--app-fg-subtle)" }}>{m.time}</span>
+                    <span className={cx("mt-1 block text-[10px]")} style={{ color: m.mine ? "rgba(255,255,255,.95)" : "var(--app-fg-subtle)" }}>{m.time}</span>
                   </div>
                 </div>
               ))}
@@ -216,7 +216,7 @@ export function EmailPage() {
           <div className="hidden flex-col lg:flex">
             <div className="flex items-start justify-between border-b p-4" style={{ borderColor: "var(--app-border)" }}>
               <div>
-                <h3 className="text-[16px] font-semibold" style={{ color: "var(--app-fg-strong)" }}>{open.subject}</h3>
+                <h2 className="text-[16px] font-semibold" style={{ color: "var(--app-fg-strong)" }}>{open.subject}</h2>
                 <div className="mt-2 flex items-center gap-2">
                   <Avatar src={open.avatar} name={open.from} classNames={{ base: "!h-7 !w-7" }} />
                   <span className="text-[12px]" style={{ color: "var(--app-fg-muted)" }}>{open.from} · {open.time}</span>
@@ -296,13 +296,13 @@ export function CalendarPage() {
             >
               {d && (
                 <>
-                  <span className="text-[12px] font-medium tnum" style={{ color: d === 29 ? "var(--app-accent)" : "var(--app-fg-muted)" }}>{d}</span>
+                  <span className="text-[12px] font-medium tnum" style={{ color: d === 29 ? "var(--app-accent-text)" : "var(--app-fg-muted)" }}>{d}</span>
                   <div className="mt-1 space-y-1">
                     {(EVENTS[d] || []).map((e, j) => (
                       <div
                         key={j}
                         className="truncate rounded px-1.5 py-0.5 text-[10.5px] font-medium"
-                        style={{ background: `var(--app-${e.tone === "primary" ? "accent" : e.tone}-soft)`, color: `var(--app-${e.tone === "primary" ? "accent" : e.tone})` }}
+                        style={{ background: `var(--app-${e.tone === "primary" ? "accent" : e.tone}-soft)`, color: `var(--app-${e.tone === "primary" ? "accent-text" : e.tone})` }}
                       >
                         {e.t}
                       </div>
@@ -383,7 +383,7 @@ export function NotesPage() {
           </ul>
           <div className="p-6">
             <div className="flex items-center gap-2">
-              <h3 className="text-[18px] font-bold" style={{ color: "var(--app-fg-strong)" }}>{note.title}</h3>
+              <h2 className="text-[18px] font-bold" style={{ color: "var(--app-fg-strong)" }}>{note.title}</h2>
               <Chip size="xs" variant="soft" color="primary">{note.tag}</Chip>
             </div>
             <p className="mt-1 text-[11px]" style={{ color: "var(--app-fg-subtle)" }}>Updated {note.updated}</p>

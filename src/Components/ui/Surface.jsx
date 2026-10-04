@@ -56,9 +56,9 @@ export function CardHeader({ title, description, actions, divider = false, class
     >
       <div className="min-w-0">
         {title && (
-          <h3 className="text-[15px] font-semibold leading-tight" style={{ color: "var(--app-fg-strong)" }}>
+          <h2 className="text-[15px] font-semibold leading-tight" style={{ color: "var(--app-fg-strong)" }}>
             {title}
-          </h3>
+          </h2>
         )}
         {description && (
           <p className="mt-1 text-[12.5px]" style={{ color: "var(--app-fg-muted)" }}>

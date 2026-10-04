@@ -7,7 +7,7 @@ import { Logo } from "../../Components/Commom/Logo";
 function SplitLayout({ children }) {
   return (
     <div className="grid grid-cols-1 min-h-full lg:grid-cols-2" style={{ background: "var(--app-bg)" }}>
-      <div
+      <aside
         className="relative hidden flex-col justify-between overflow-hidden p-12 lg:flex"
         style={{ background: "linear-gradient(160deg, var(--app-accent) 0%, #1a1150 60%, #0b0a1e 100%)" }}
       >
@@ -27,17 +27,17 @@ function SplitLayout({ children }) {
           </div>
         </div>
         <span className="text-[11px] text-white/40">© {new Date().getFullYear()} Astrobit</span>
-      </div>
-      <div className="flex items-center justify-center p-6 sm:p-12">
+      </aside>
+      <main className="flex items-center justify-center p-6 sm:p-12">
         <div className="w-full max-w-sm">{children}</div>
-      </div>
+      </main>
     </div>
   );
 }
 
 function CenteredLayout({ children }) {
   return (
-    <div className="flex min-h-full items-center justify-center p-6" style={{ background: "var(--app-bg)" }}>
+    <main className="flex min-h-full items-center justify-center p-6" style={{ background: "var(--app-bg)" }}>
       <div className="w-full max-w-sm">
         <div className="mb-8 flex justify-center">
           <Logo />
@@ -49,7 +49,7 @@ function CenteredLayout({ children }) {
           {children}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -98,7 +98,7 @@ function SignInForm() {
         <div>
           <div className="mb-1.5 flex items-center justify-between">
             <span className="text-[12.5px] font-medium" style={{ color: "var(--app-fg-strong)" }}>Password</span>
-            <Link to="/auth/forgot-password" className="text-[12px]" style={{ color: "var(--app-accent)" }}>Forgot password?</Link>
+            <Link to="/auth/forgot-password" className="text-[12px]" style={{ color: "var(--app-accent-text)" }}>Forgot password?</Link>
           </div>
           <PasswordField name="password" defaultValue="astrobit-demo" aria-label="Password" />
         </div>
@@ -106,7 +106,7 @@ function SignInForm() {
         <Button type="submit" color="primary" fullWidth isLoading={loading}>Sign in</Button>
       </Form>
       <p className="mt-5 text-center text-[12.5px]" style={{ color: "var(--app-fg-muted)" }}>
-        Don't have an account? <Link to="/auth/register" style={{ color: "var(--app-accent)" }}>Sign up free</Link>
+        Don't have an account? <Link to="/auth/register" className="underline underline-offset-2" style={{ color: "var(--app-accent-text)" }}>Sign up free</Link>
       </p>
       <p className="mt-3 text-center">
         <Link to="/dashboards/analytics" className="inline-flex items-center gap-1 text-[12px]" style={{ color: "var(--app-fg-subtle)" }}>
@@ -135,7 +135,7 @@ function SignUpForm() {
         <Button type="submit" color="primary" fullWidth isLoading={loading}>Create account</Button>
       </Form>
       <p className="mt-5 text-center text-[12.5px]" style={{ color: "var(--app-fg-muted)" }}>
-        Already have an account? <Link to="/auth/login" style={{ color: "var(--app-accent)" }}>Sign in</Link>
+        Already have an account? <Link to="/auth/login" className="underline underline-offset-2" style={{ color: "var(--app-accent-text)" }}>Sign in</Link>
       </p>
     </>
   );
@@ -164,7 +164,7 @@ function LockForm() {
   return (
     <>
       <div className="mb-6 flex flex-col items-center text-center">
-        <div className="grid h-14 w-14 place-items-center rounded-full" style={{ background: "var(--app-accent-soft)", color: "var(--app-accent)" }}>
+        <div className="grid h-14 w-14 place-items-center rounded-full" style={{ background: "var(--app-accent-soft)", color: "var(--app-accent-text)" }}>
           <span className="text-[18px] font-bold">NO</span>
         </div>
         <h1 className="mt-3 text-[18px] font-bold" style={{ color: "var(--app-fg-strong)" }}>Nadia Okafor</h1>

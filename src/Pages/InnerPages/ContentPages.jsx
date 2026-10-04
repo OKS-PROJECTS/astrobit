@@ -63,7 +63,7 @@ export function ReleaseNotesPage() {
               <Sparkles size={18} />
             </span>
             <div>
-              <h3 className="text-[16px] font-bold" style={{ color: "var(--app-fg-strong)" }}>Astrobit 1.4 — Reports, refined</h3>
+              <h2 className="text-[16px] font-bold" style={{ color: "var(--app-fg-strong)" }}>Astrobit 1.4 — Reports, refined</h2>
               <p className="text-[11.5px]" style={{ color: "var(--app-fg-subtle)" }}>Released August 2026</p>
             </div>
           </div>

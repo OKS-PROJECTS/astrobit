@@ -88,7 +88,7 @@
   --oks-color-border: var(--app-border);
   --oks-form-field-bg: #f5f6fb;
   --oks-form-field-fg: #171a23;
-  --oks-form-field-placeholder: #9097a8;
+  --oks-form-field-placeholder: #676c78;
   --oks-form-field-label: #171a23;
   --oks-form-field-muted: #5a6173;
   --oks-form-field-border: #11142024;
@@ -105,17 +105,19 @@
   --app-fg-strong: #171a23;
   --app-fg: #2c3242;
   --app-fg-muted: #5a6173;
-  --app-fg-subtle: #9097a8;
+  --app-fg-subtle: #676c78;
 
-  --app-accent: #6a4cff;
+  --app-accent: #674af7;
+  --app-accent-text: var(--app-accent);
+  --app-accent-solid: var(--app-accent);
   --app-accent-2: #8b6dff;
   --app-accent-soft: #6a4cff1c;
   --app-accent-contrast: #ffffff;
 
-  --app-ok: #16b67e;      --app-ok-soft: #16b67e1f;
-  --app-bad: #e8556a;     --app-bad-soft: #e8556a1f;
-  --app-warn: #df9626;    --app-warn-soft: #df962624;
-  --app-info: #3b8ef0;    --app-info-soft: #3b8ef01f;
+  --app-ok: #0e724f;      --app-ok-soft: #16b67e1f;
+  --app-bad: #a73d4c;     --app-bad-soft: #e8556a1f;
+  --app-warn: #926219;    --app-warn-soft: #df962624;
+  --app-info: #2d6db9;    --app-info-soft: #3b8ef01f;
 
   --app-card-radius: 18px;
   --app-card-border: 1px solid var(--app-border);
@@ -124,12 +126,12 @@
   /* sidebar */
   --app-menu-bg: #ffffff;
   --app-menu-fg: #5a6173;
-  --app-menu-fg-muted: #9097a8;
+  --app-menu-fg-muted: #676c78;
   --app-menu-active-bg: var(--app-accent-soft);
-  --app-menu-active-fg: var(--app-accent);
+  --app-menu-active-fg: var(--app-accent-text);
   --app-menu-hover-bg: #f3f4f9;
   --app-menu-border: var(--app-border);
-  --app-menu-heading: #9097a8;
+  --app-menu-heading: #676c78;
 
   /* header */
   --app-header-bg: #ffffffcc;
@@ -167,7 +169,7 @@
   --oks-palette-neutral-0: #12141d;
   --oks-form-field-bg: #0c0e15;
   --oks-form-field-fg: #f3f4f9;
-  --oks-form-field-placeholder: #5f6678;
+  --oks-form-field-placeholder: #818694;
   --oks-form-field-label: #f3f4f9;
   --oks-form-field-muted: #9aa1b2;
   --oks-form-field-border: #ffffff21;
@@ -210,9 +212,11 @@
   --app-fg-strong: #f3f4f9;
   --app-fg: #d7dae3;
   --app-fg-muted: #9aa1b2;
-  --app-fg-subtle: #5f6678;
+  --app-fg-subtle: #818694;
 
   --app-accent: #7c5cff;
+  --app-accent-text: #9075ff;   /* accent as text on its own tint: 5:1 */
+  --app-accent-solid: #6f53e6;  /* accent as a fill under white text: 5.2:1 */
   --app-accent-2: #9d86ff;
   --app-accent-soft: #7c5cff26;
   --app-accent-contrast: #ffffff;
@@ -226,10 +230,10 @@
 
   --app-menu-bg: #0c0e15;
   --app-menu-fg: #9aa1b2;
-  --app-menu-fg-muted: #5f6678;
+  --app-menu-fg-muted: #818694;
   --app-menu-hover-bg: #ffffff0a;
   --app-menu-border: var(--app-border);
-  --app-menu-heading: #5f6678;
+  --app-menu-heading: #818694;
 
   --app-header-bg: #0c0e15cc;
   --app-header-border: var(--app-border);

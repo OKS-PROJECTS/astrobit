@@ -4,7 +4,7 @@ import { Logo } from "../../Components/Commom/Logo";
 
 function Shell({ code, title, description, children }) {
   return (
-    <div className="flex min-h-full flex-col items-center justify-center px-6 py-16 text-center" style={{ background: "var(--app-bg)" }}>
+    <main className="flex min-h-full flex-col items-center justify-center px-6 py-16 text-center" style={{ background: "var(--app-bg)" }}>
       <Logo />
       <p className="mt-10 text-[64px] font-extrabold leading-none tracking-[-0.03em]" style={{ color: "var(--app-accent)" }}>
         {code}
@@ -12,7 +12,7 @@ function Shell({ code, title, description, children }) {
       <h1 className="mt-4 text-[22px] font-bold" style={{ color: "var(--app-fg-strong)" }}>{title}</h1>
       <p className="mt-2 max-w-md text-[13px]" style={{ color: "var(--app-fg-muted)" }}>{description}</p>
       <div className="mt-6 flex gap-2">{children}</div>
-    </div>
+    </main>
   );
 }
 

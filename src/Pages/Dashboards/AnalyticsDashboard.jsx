@@ -63,9 +63,9 @@ export default function AnalyticsDashboard() {
         <Surface className="flex flex-col lg:col-span-2">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <h3 className="text-[15px] font-semibold" style={{ color: "var(--app-fg-strong)" }}>
+              <h2 className="text-[15px] font-semibold" style={{ color: "var(--app-fg-strong)" }}>
                 Revenue overview
-              </h3>
+              </h2>
               <div className="mt-1.5 flex flex-wrap items-center gap-2">
                 <span className="text-[22px] font-bold tnum" style={{ color: "var(--app-fg-strong)" }}>
                   {money(486200)}
