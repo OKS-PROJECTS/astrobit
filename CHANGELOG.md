@@ -4,7 +4,24 @@ All notable changes to Astrobit are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the project adheres to
 [Semantic Versioning](https://semver.org/).
 
-> Requires oks-ui ^1.1.2
+> Requires oks-ui ^1.3.2
+
+## [1.1.1] — 2026-10-04
+
+### Changed
+
+- **Updated to oks-ui 1.3.2.** Brings the WCAG-AA colour work from 1.2 (deeper solid fills, readable text
+  tones in both themes), the per-component entry points, and the 1.3.2 contrast fix for muted text.
+- Removed the unused `date-fns` dependency.
+
+### Fixed
+
+- **Secondary text now meets 4.5:1 contrast in both themes.** `--app-fg-subtle` (and the sidebar's muted
+  text and section headings) was 3.2:1 on the dark surfaces and 2.7:1 on the light ones; it is now `#818694`
+  in dark and `#676c78` in light, still quieter than `--app-fg-muted`.
+- Standalone pages (sign in, sign up, 404, 500, maintenance) now have a `<main>` landmark.
+- Inline "Sign up" / "Sign in" links are underlined, so they no longer rely on colour alone.
+- Card titles are `h2`, so the heading order under each page title is no longer skipped.
 
 ## [1.1.0] — 2026-09-01
 

@@ -12,7 +12,7 @@ library, no second charting library.
 [![Astrobit — analytics dashboard](.github/media/dashboard-dark.png)](https://oks-projects.github.io/astrobit/)
 
 - **Stack:** Vite + React 19 · react-router-dom v7 · Tailwind v4 (layout only) ·
-  lucide-react · `oks-ui ^1.1.2`
+  lucide-react · `oks-ui ^1.3.2`
 - **Theme:** dark-first, light included, one `src/styles/theme.css`
 - **Data:** deterministic mock data in `src/data/` — there is no backend
 - **Routes:** every entry in the sidebar (~167) resolves to a real page
